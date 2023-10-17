@@ -56,17 +56,23 @@
         
         .contact-info {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: flex-start;
         }
     </style>
 </head>
 
 <body>
     <main>
+        <img src="pic1.png" alt="Image">
         <img src="logo.png" alt="Your Logo">
         <p>
             Welcome to my website! I'm a multi-talented individual passionate about creativity. I'm a <a href="/violin">violinist</a>, a <a href="#">producer</a>, a <a href="#">photographer</a>, and a <a href="#">media artist</a>. Explore my work and get in touch with me.
         </p>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+        </div>
     </main>
 
     <footer>
