@@ -14,16 +14,20 @@
             font-style: normal;
             margin: 0;
             padding: 0;
+            display: flex;
+            align-items: center;
         }
 
         main {
+            display: flex;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
 
         img {
-            width: 100%;
+            width: 100px; /* Adjust the size as needed */
+            margin-right: 20px;
         }
 
         p {
@@ -35,9 +39,11 @@
         a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s; /* Transition for color change */
         }
 
         a:hover {
+            color: #FFC300; /* Color change on hover */
             text-decoration: underline;
         }
 
@@ -61,10 +67,6 @@
         <p>
             Welcome to my website! I'm a multi-talented individual passionate about creativity. I'm a <a href="/violin">violinist</a>, a <a href="#">producer</a>, a <a href="#">photographer</a>, and a <a href="#">media artist</a>. Explore my work and get in touch with me.
         </p>
-        <div class="contact-info">
-            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
-        </div>
     </main>
 
     <footer>
