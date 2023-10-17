@@ -44,12 +44,12 @@
         a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, text-decoration 0.3s; /* Added transition for text-decoration */
         }
 
         a:hover {
-            color: #FFC300;
-            text-decoration: underline;
+            color: #fa8b02; /* Changed hover color to #fa8b02 */
+            text-decoration: underline; /* Added underline on hover */
         }
 
         footer {
@@ -90,7 +90,7 @@
 
 <body>
     <main>
-        <img src="pic2.png" alt="Image"> <!-- Updated image source -->
+        <img src="pic2.png" alt="Image">
         <p>
             Konrad Simon is a student at the Institute for Music and Media in Düsseldorf. He is a <a href="/violin" target=violin> violinist</a>, <a href="" target=_blank> producer</a>, <a href="" target=_blank> photographer</a> and <a href="" target=_blank> media artist</a>.
         </p>
