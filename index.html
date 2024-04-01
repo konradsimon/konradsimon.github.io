@@ -1,3 +1,371 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>404.zero</title>
+		<!-- PRELOAD FONTS -->
+		<link rel="preload" href="fonts/IBMPlexMono-Medium.ttf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/IBMPlexMono-SemiBold.ttf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/IBMPlexMono-Regular.ttf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/IBMPlexMono-Bold.ttf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/IBMPlexMono-Light.ttf" as="font" crossorigin="anonymous" />
+
+		<!-- FAVICON -->
+		<link rel="icon" href="ico.svg">
+		<link rel="apple-touch-icon" href="ico.png">
+		<link rel="icon" type="image/png" href="icons/favicon16x16.png" sizes="16x16"/>
+		<link rel="icon" type="image/png" href="icons/favicon32x32.png" sizes="32x32"/>
+		<link rel="icon" type="image/png" href="icons/favicon96x96.png" sizes="96x96"/>
+		<link rel="apple-touch-icon" sizes="72x72" href="icons/touch-ipad.png"/>
+		<link rel="apple-touch-icon" sizes="114x114" href="icons/touch-iphone.png"/>
+		<link rel="apple-touch-icon" sizes="152x152" href="icons/touch-ipad-ret.png"/>
+
+		<!-- OPENGRAPH -->
+		<!-- <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@404dotzero" />
+		<meta name="twitter:creator" content="@404dotzero" />
+		<meta property="og:url" content="http://404zero.com" />
+		<meta property="og:title" content="404.zero" />
+		<meta property="og:description" content="404.zero" />
+		<meta property="og:image" content="og.jpg" /> -->
+		
+		<link rel="stylesheet" href="styles.css">
+
+		
+	</head>
+	<body style="cursor: default;">
+		
+		<canvas id = 'canvas'></canvas>
+
+		<div id='bio' class='infoText'>
+			<!-- <p class="p1">404.zero</p> -->
+			<!-- <h1>404.zero<h1> -->
+
+			<h1>404.zero</h1>
+			<h2>This accomplished and ever-ambitious duo of A/V architects and toolmakers cook up mind-altering experiences in generative art that require expertise in math, coding and the science of sound. </h2>
+			
+			<h2>By creating mesmerizing digital matter of frighteningly porous frontiers exclusively through coding and modular gear, they push back the limits of footage and sample-free language that is opulent and breathtakingly singular. Taking as starting points their most irrepressible fascinations with death, the unknown and the cosmos, they craft thrilling, precise, painterly code-art that broaches big philosophical questions and provides mesmerizing though highly speculative answers.</h2>
+			
+			<h2>Together, Kristina and Aleksandr create modern generative art and innovative tools that raise the bar on the synergistic possibilities of visuals and sound. Since esteblishing of 404.zero in 2016, they’ve collaborated on a slew of immersive affairs, always up for the challenge of conjuring new things—modular music, generative visuals, and media production tools.
+			</h2>
+			
+			<h2>They participated in many international festivals all around the world. Including Dark Mofo, MUTEK, GAMMA, Electric Castle Festival, LACMA, DIAGE, Circle of Light, e.t.c. 404’s works were selected by Japan Media Arts Festival and awarded by Genius Loci Weimar Festival, IMAP festival. Their debut music album 404.0 was released on Icelandic music label Bedroom Community in 2020.</h2>
+			<h1>Social & Contacts</h1>
+			<p><a href="https://twitter.com/404dotzero" >Twitter</a></p>
+			<p><a href="https://www.instagram.com/404.zero" >Instagram</a></p>
+			<p><a href="https://www.youtube.com/@404zero" >Youtube</a></p>
+			<p><a href="https://vimeo.com/404zero" >Vimeo</a></p>
+			<p ><a  id='mail' style="cursor:pointer">Mail</a></p>
+			
+			<!-- <h1>Upcoming shows</h1>
+			<p>ISOTRP Live at <a href="https://tokyo.mutek.org/en" >MUTEK JP</a>, December 9, Tokyo, Japan</p>
+			 -->
+			<h1>Latest Releases</h1>
+			<p><a href='/zerror'>ZERROR</a> TouchDesigner Plug-in</p>
+			<p>ISOTRP <a href="https://404zero.bandcamp.com/album/isotrp-2" >Bandcamp</a>
+					  <a href="https://music.apple.com/id/album/isotrp/1706158717">iTunes</a>
+					  <a href="https://open.spotify.com/album/3ktnWCodjB2RYN3moYjTwe">Spotify</a>
+					  <a href="https://songwhip.com/404zero/isotrp">Other</a></p>
+			<p><a href="https://youtu.be/u0KeK9RipBE" >Gerasim</a> (Music Video)</p>
+			<p><a href="https://youtu.be/lo4AyHpTS2E" >Alice's Train</a> (Music Video)</p>
+			<h1>Software and Plug-ins</h1>
+			<p><a href='/zerror'>ZERROR</a> plug-in for TouchDesigner</p>
+
+			<h1><a href='/installationgen'>Light Installations</a></h1>
+			<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/n1e6DWSnqpI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+			<p><a href='/beams'>3.24</a> at BEAMS, London, UK 2023</p>
+			<p><a href="https://youtu.be/n1e6DWSnqpI" >3.2</a> at Dark Mofo, Tasmania, 2021</p>
+			<p><a href="https://youtu.be/rG9YW8tmE3Y" >3.1</a> 2020</p>
+			<p><a href="https://youtu.be/JW0hwo7tIWw" >Arrival</a> at Avant Gardner, USA, 2019</p>
+			<p><a href="https://youtu.be/ai2vYGcfzBE" >8.0</a> 2019</p>
+			<p><a href="https://youtu.be/xj75aTd6Gmk" >8.0.1</a> 2020</p>
+			<p><a href="https://vimeo.com/192918334" >No Time. No Future. I'm here. RIP. </a>2016</p>
+			<h1><a href='/audiovisual'>Audiovisual</a></h1>
+			<p><a href="https://vimeo.com/215426395" >Phosphenes</a></p>
+			<p><a href="https://vimeo.com/237152011" >Circle Of Light</a></p>
+			<p><a href="https://youtu.be/sjKIrW0mvns" >Black Sunday</a></p>
+			<p><a href="https://youtu.be/sjKIrW0mvns" >404.1</a></p>
+			<p><a href="https://vimeo.com/214301962" >Gig For Sleepers</a></p>
+			<p><a href="https://vimeo.com/508573357" >Deep Echo</a></p>
+			
+			<h1>Music</h1>
+			<p><a href="https://404zero.bandcamp.com/" >Bandcamp</a></p>
+			<p><a href="https://open.spotify.com/artist/5lri0rQHZIrjykaH4jZrvq" >Spotify</a></p>
+			<p><a href="https://www.deezer.com/en/artist/87130592" >Deezer</a></p>
+			<p><a href="https://music.apple.com/id/artist/404-zero/1500633430" >Apple Music</a></p>
+			<h1>NFT</h1>
+			<p><a href="https://hiddeninnoise.com/" >Hidden In Noise</a></p>
+			<p><a href="https://innoisewetrust.com/" >In Noise We Trust</a></p>
+			<p><a href="https://lightonchain.com/" >LightOnChain</a></p>
+			<p><a href="https://superrare.com/404zero" >Superrare</a></p>
+			<!-- <h1>INFO</h1>
+			<p><a href="" >Bio</a></p>
+			<p><a href="" >Press</a></p> -->
+			<h1>Press</h1>
+			<p><a href="https://block.fm/news/404-zero-interview" >Block.fm [jp]</a></p>
+			<p><a href="https://hypebeast.com/2021/12/studio-visits-404-zero" >Hypebeast</a></p>
+			<p><a href="https://louderthanwar.com/404-zero-404-0-album-review/" >Louder Than War</a></p>
+			<p><a href="https://clotmag.com/interviews/404-zero-the-architecture-of-nothingness-and-metaphysics-of-time-and-space-in-mind-bending-audiovisual-code-art" >CLOT Magazine</a></p>
+			<p><a href="https://www.loudandquiet.com/reviews/404-0-404-zero/" >Loud And Quiet</a></p>
+			<p><a href="https://bedroomcommunity.net/404zero-4040" >Bedroom Community</a></p>
+			<p><a href="https://www.decodedmagazine.com/404zero-breaking-through-with-generative-art-and-modular-synthesizers/" >Decoded Magazine</a></p>
+			<p><a href="https://www.nastymagazine.com/art-culture/404-zero-the-dark-sound-of-space/" >Nasty Magazine</a></p>
+			<p><a href="https://visualatelier8.com/404zero-generating-visual-art-from-sound/" >Visualatelier 8</a></p>
+			<p><a href="http://digicult.it/design/advanced-technology-prophetic-work-and-mysterious-meanings-of-life-interview-with-404-zero/" >Digicult</a></p>
+			<p><a href="https://openlab.fm/news/digital-storms-a-v-artists-selected-404-zero" >openlab.fm</a></p>
+			<p><a href="https://beatsperminute.com/album-review-404-zero-404-0/" >beatsperminute.com</a></p>
+			<p><a href="https://derivative.ca/community-post/prolific-artist-duo-404zero-release-zerror-control-ui-touchdesigner/60966" >derivative.ca</a></p>
+			<p><a href="https://theculturetrip.com/europe/russia/articles/russian-artists-404-zero-on-creative-influences-processes-and-challenges/" >theculturetrip.com</a></p>
+			
+			
+
+			<p class="p0">©404.ZERO 2023</p>
+
+		</div>
+		<div id='rightMenu'>
+			<div id='redDotParent' class="menuItem">
+				<!-- <a href="#" class="right"> -->
+					<div id='redDot' class="dot"></div>
+				<!-- </a> -->
+
+			</div>
+			<!-- <div class="menuItem"><a href ="https://twitter.com/404dotzero" class = "link">twitter</a></div>
+			<div class="menuItem"><a href ="https://vimeo.com/404zero" class = "link">vimeo</a></div>
+			<div class="menuItem"><a href ="https://www.instagram.com/404.zero" class = "link">instagram</a></div>
+			<div class="menuItem"><a href ="https://open.spotify.com/artist/5lri0rQHZIrjykaH4jZrvq" class = "link">spotify</a></div>
+			<div class="menuItem"><a href ="https://www.youtube.com/@404zero" class = "link">youtube</a></div> -->
+		</div >
+
+		
+		<audio id="noiseAudio1" loop="true" src="noiseA.mp3" crossorigin="anonymous"></audio>
+		<audio id="noiseAudio2" loop="true" src="noiseB.mp3" crossorigin="anonymous"></audio>
+
+
+		<script id="example" type="x-shader/x-fragment">
+
+			
+
+//-------------------------GLSL CODE
+#ifdef GL_ES
+precision mediump float;
+#endif
+ 
+#extension GL_OES_standard_derivatives : enable
+ 
+
+const int MAX_MARCHING_STEPS = 30;
+const float MIN_DIST = 0.0;
+const float MAX_DIST = 100.0;
+uniform float EPSILON;
+
+
+uniform float time;
+uniform float lfoJs;
+uniform vec2 mouse;
+uniform vec2 resolution;
+varying vec2 surfacePosition;
+uniform float sound;
+uniform sampler2D backbuffer;
+
+
+
+
+ 
+float 	noiseH = -0.2;
+float 	noiseFr = 20.0;
+
+
+
+//out vec4 fragColor; 
+
+vec3 camP = vec3(0.0,0.0,10.0);
+//camP = vec3(0.0,0.0,10.0);
+
+
+
+
+
+
+vec4 mod289(vec4 x){
+	float a = 289.0;
+	return x - floor(x / a) * a;
+	}
+
+float mod13(float x){
+	float a = 130.0;
+	return x - floor(x / a) * a;
+	}
+	
+vec4 perm(vec4 x){return mod289(((x * 1.0) + 1.0) * x);}
+
+float rand(float n){return fract(sin(n) * 43758.5453123);}
+
+
+float noise(vec3 p){
+/**
+    vec3 a = floor(p);
+    vec3 d = p - a;
+    d = d * d * (3.0 - 2.0 * d);
+
+    vec4 b = a.xxyy + vec4(0.0, 1.0, 0.0, 1.0);
+    vec4 k1 = perm(b.xyxy);
+    vec4 k2 = perm(k1.xyxy + b.zzww);
+
+    vec4 c = k2 + a.zzzz;
+    vec4 k3 = perm(c);
+    vec4 k4 = perm(c + 1.0);
+
+    vec4 o1 = fract(k3 * (1.0 / 41.0));
+    vec4 o2 = fract(k4 * (1.0 / 41.0));
+
+    vec4 o3 = o2 * d.z + o1 * (1.0 - d.z);
+    vec2 o4 = o3.yw * d.x + o3.xz * (1.0 - d.x);
+
+    return o4.y * d.y + o4.x * (1.0 - d.y);*/
+	return abs((sin(p.x)+0.3*sin(p.x*0.13+21.0)+sin(p.y*0.3+13.0)+sin(p.z*1.0)+sin(p.z*7.0+11.0))/3.0)+0.01*rand(mod13(p.z));
+}
+float sdSphere( vec3 p, float s )
+{
+  return -length(p)+s;
+}
+
+float noiseSDF(vec3 samplePoint){
+	
+	noiseH = 0.2*sin(time/300.0)+(2.0*mouse.y-1.0)*2.0+0.9;
+	noiseFr = 10.0*abs((2.0*mouse.x-1.0))+7.0;
+	return (samplePoint.y)+noise(vec3(samplePoint.x*noiseFr, 0.5,samplePoint.z*noiseFr))*noiseH+2.1;// + noise(vec3(samplePoint.x*noiseFr*2.0, 0.5,samplePoint.z*noiseFr*0.1))*noiseH*5.0+2.1;
+}
+
+
+
+float sceneSDF(vec3 p) {
+	vec3 cubePoint = p + vec3(sin(time/190.0)*10.0, 0.0,  sin(time/100.0)*20.0);
+    float a = min( noiseSDF( cubePoint), noiseSDF(vec3( -cubePoint.x, -cubePoint.y,  cubePoint.z)));
+	return sdSphere(p,10.0)*(0.5-abs(max(mouse.y,mouse.x)-0.5))+a;
+     
+     
+}
+
+
+
+
+float shortestDistanceToSurface(vec3 eye, vec3 marchingDirection, float start, float end, float newStart) {
+    float depth = start;
+    for (int i = 0; i < MAX_MARCHING_STEPS; i++) {
+        float dist = sceneSDF(eye + depth * marchingDirection);
+        if (dist < EPSILON) {
+        
+        	if (depth < end){
+        		return depth;
+        		}
+        		
+        	else{return depth;}
+        }
+        depth += dist;
+        //marchingDirection = vec3(1.0, 1.0, 1.0);
+        if (depth >= end) {
+            return end;
+        }
+        
+    }
+    return end;
+}
+
+float colorStep(vec3 eye, vec3 marchingDirection, float start, float end) {
+    float depth = start;
+    vec3 newMarchDir =  marchingDirection;
+    for (int i = 0; i < MAX_MARCHING_STEPS; i++) {
+    	
+        float dist = sceneSDF(eye + depth * newMarchDir);
+        if (dist < EPSILON) {
+			return float(i);
+        }
+        depth += dist;
+        //newMarchDir += noise(eye + depth * newMarchDir)*0.0251;
+        //normalize(newMarchDir);
+        if (depth >= end) {
+            return float(MAX_MARCHING_STEPS);
+        }
+    }
+    return float(MAX_MARCHING_STEPS);
+}
+            
+
+
+ 
+vec3 rayDirection(float fieldOfView, vec2 size, vec2 fragCoord) {
+    vec2 xy = fragCoord - size / 2.0;
+    float z = size.y / tan(radians(fieldOfView) / 2.0);
+    return normalize(vec3(xy, -z));
+}
+
+mat4 viewMatrix(vec3 eye, vec3 center, vec3 up) {
+    // Based on gluLookAt man page
+    vec3 f = normalize(center - eye);
+    vec3 s = cross(f, up);
+    vec3 u = cross(s, f);
+    return mat4(
+        vec4(s, 0.0),
+        vec4(u, 0.0),
+        vec4(-f, 0.0),
+        vec4(0.0, 0.0, 0.0, 1.0)
+    );
+}
+
+
+void main()
+{
+	vec2 uv = gl_FragCoord.xy;
+	vec2 fragCoord = surfacePosition*0.5+0.5; //FOR WEBGL
+	//vec2 fragCoord = vUV.st;
+	fragCoord.x = fragCoord.x*resolution.x/resolution.y+((1.0-resolution.x/resolution.y)/2.0);
+	// float d = 0.2;
+	// if (fragCoord.x>0.5-d && fragCoord.x<0.5+d && fragCoord.y>0.5-d*resolution.y/resolution.x && fragCoord.y<0.5+d*resolution.y/resolution.x)  gl_FragColor = vec4(0.0);
+	// else{
+		
+		vec3 viewDir = rayDirection(150.0, vec2(1.0,1.0), fragCoord);
+		vec3 eye = camP;
+		eye.x = 10.0*(2.0*mouse.x-1.0);
+		eye.y = 2.0*(2.0*mouse.y-1.0)+0.7;
+		 
+		mat4 viewToWorld = viewMatrix(eye, vec3(0.0,0.0,0.0), vec3(0.0, 1.0, 0.0));
+		
+		vec3 worldDir = (viewToWorld * vec4(viewDir, 0.0)).xyz;
+		float color = colorStep(eye, worldDir, MIN_DIST, MAX_DIST);
+		
+		float dist = MAX_DIST;
+		float freq = 0.7;
+		if (abs(mouse.y-0.5) < 0.15) freq = (abs(mouse.y)-0.15) * 1000.0+0.7;
+		else freq = 0.7;
+		
+		color = 35.0-color*4.0;
+		if (dist > MAX_DIST - EPSILON) {
+			// Didn't hit anything
+			gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+			return;
+		}
+		color = color*0.045;
+		//V1-----------
+		//gl_FragColor = vec4(color, color, color, 1.0) * (rand(fragCoord.x*123.0*fragCoord.y*dist)*0.5+0.5)*sin(time*mouse.x*mouse.y*120.0);//(0.3+0.6*noise((eye + worldDir*dist)*12312.0));
+		//V2---------
+		
+		vec4 cPrev = texture2D(backbuffer, gl_FragCoord.xy / resolution).xyzw;
+		//gl_FragColor = vec4(color, color, color, 1.0) * (rand(fragCoord.x*123.0*fragCoord.y*dist)*0.5+0.5)*sin(time*freq+mouse.x*mouse.y*1200.0)+mouse.x*cPrev*0.95;
+		gl_FragColor = vec4(color, color, color, 1.0) * (rand(fragCoord.x*123.0*fragCoord.y*dist)*0.5+0.5)*lfoJs;
+   
+	
+	
+	gl_FragColor.a = 1.0;
+
+	//gl_FragColor.x = mouse.x;
+	//gl_FragColor.y = surfacePosition.y;
+    }
+
+//-------------------------------/GLSL CODE
 </script>
 
 		<script id="fragmentShader" type="x-shader/x-fragment">
