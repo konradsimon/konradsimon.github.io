@@ -1,34 +1,216 @@
-/* Container holding the circles */
-.circle-container {
- position: relative;
- display: flex;
- justify-content: space-around;
- align-items: center;
- flex-wrap: wrap;
- height: 250px;
- background-color: #f5f5f5;
- padding: 15px;
- box-sizing: border-box;
+
+@font-face {
+	font-family: ibm;
+	src: url(fonts/IBMPlexMono-Medium.ttf);
+	}
+
+@font-face {
+	font-family: ibm;
+	src: url(fonts/IBMPlexMono-SemiBold.ttf);
+	font-weight: 600;
+	}
+
+@font-face {
+	font-family: ibm;
+	src: url(fonts/IBMPlexMono-Regular.ttf);
+	font-weight: 400;
+	}
+
+@font-face {
+	font-family: ibm;
+	src: url(fonts/IBMPlexMono-Bold.ttf);
+	font-weight: bold;
+	}
+
+@font-face {
+	font-family: ibm;
+	src: url(fonts/IBMPlexMono-Light.ttf);
+	font-weight: 300;
+	}
+
+
+body {
+
+	background-color: #000000;
+	margin: 0;
+	padding: 0;
+/*				overflow: hidden;*/
+
+	 -ms-overflow-style: none;
+	 scrollbar-width: none;
 }
 
-/* Individual circle */
-.circle {
- position: relative;
- display: inline-block;
- width: 100px;
- height: 100px;
- border-radius: 50%;
- background-color: #0091ea;
- margin: 5px;
- text-align: center;
- line-height: 100px;
- color: #fff;
- font-size: 18px;
- cursor: pointer;
- transition: all 0.3s ease;
+body::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
-/* Change the circle's color on hover */
-.circle:hover {
- background-color: #3a3a3a;
+
+
+button:hover, select:hover, a:hover {
+	color: #ffffff;
 }
+
+option {
+	color: #ffffff;
+	background-color: transparent;
+}
+
+
+
+.right {
+
+	height: fit-content;;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+}
+
+#rightMenu{
+	margin: 3vmax;
+    display: flex;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    flex-direction:column;
+    align-content: flex-end;
+    z-index: 10;
+    pointer-events: none; 
+
+}
+
+.dot {
+	height: 6vmax;
+	width: 6vmax;
+	margin: 0px;
+	padding: 0px;
+	background-color: #f00;
+	border-radius: 50%;
+	display: inline-block;
+	cursor:pointer;
+	pointer-events: auto; 
+
+}
+
+.menuItem {
+
+	pointer-events: none; 
+    margin:0px;
+    padding: 0px;
+    text-align: right;
+    color: #9A9A9A;
+	font-family: ibm;
+	font-size: 3vh;
+}
+
+
+
+.link{
+	padding: 0px;
+	border: none;
+	border-radius: 0px;
+	margin: 0px;
+	color: #9A9A9A;
+	font-family: ibm;
+	text-decoration: none;
+	pointer-events: auto; 
+}
+
+.link:hover{
+	color: #CCC;
+}
+
+.infoText{
+    color: #111;
+    position: absolute;
+	width: 100%;
+    min-height: 100%;
+	padding-left: 0vmin;
+	padding-right: 0vmin;
+	padding-top: 3vmax;
+    font-family: ibm;
+	text-decoration: none;
+	font-size: 2vh;
+	font-weight: 400;
+	z-index: 9;
+	display: none;
+	background-color: rgba(255, 0, 0, 0.8);
+}
+
+.infoText h1 {
+    font-weight: 600;
+    font-size: 4vh;
+    padding-left: 0px;
+    margin-left: 9.8vmin;
+}
+
+.infoText h2 {
+	font-size: 2vh;
+	font-weight: 400;
+    line-height: 1vmax;
+    margin-left: 10vmin;
+    margin-right: 10vmin;
+    margin-block-start: 0px;
+    margin-block-end: 2vmin;
+    line-height: normal;
+}
+
+.infoText a{
+	text-decoration: underline;
+	color: #111;
+}
+
+.infoText p {
+    line-height: 1vmax;
+    margin-left: 10vmin;
+    margin-right: 10vmin;
+    margin-block-start: 0px;
+    margin-block-end: 2vmin;
+    line-height: normal;
+}
+
+
+.p1{
+	font-weight: 600;
+	font-size: 2.5vh;
+}
+
+.p0{
+	font-weight: 300;
+	font-size: 1vh;
+}
+
+canvas{
+
+	display: block;
+	position:fixed;
+	left: 0px;
+	top: 0px;
+	margin: 0px;
+	padding: 0px;
+	z-index: 1;
+}
+
+
+
+/*@media only screen and (orientation: portrait){
+	.menuItem{
+		text-align: center;
+	}
+
+	#rightMenu{
+		margin: 0px;
+		margin-top: 30px;
+	    display: flex;
+	    position: fixed;
+	    right: 0px;
+	    top: 0px;
+	    flex-direction:column;
+	    align-content: center;
+	    width:100%;
+
+	}
+}*/
+
+
+
+
