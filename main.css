@@ -6,7 +6,7 @@
 
 @font-face {
 	font-family: gt;
-	src: urlGT-Flexa-Mono-Light-Trial.otf);
+	src: url(GT-Flexa-Mono-Light-Trial.otf);
 	font-weight: 600;
 	}
 
@@ -98,7 +98,7 @@ option {
     padding: 0px;
     text-align: right;
     color: #9A9A9A;
-	font-family: ibm;
+	font-family: gt;
 	font-size: 3vh;
 }
 
@@ -110,7 +110,7 @@ option {
 	border-radius: 0px;
 	margin: 0px;
 	color: #9A9A9A;
-	font-family: ibm;
+	font-family: gt;
 	text-decoration: none;
 	pointer-events: auto; 
 }
@@ -127,7 +127,7 @@ option {
 	padding-left: 0vmin;
 	padding-right: 0vmin;
 	padding-top: 3vmax;
-    font-family: ibm;
+    font-family: gt;
 	text-decoration: none;
 	font-size: 2vh;
 	font-weight: 400;
