@@ -84,9 +84,9 @@ option {
 	margin: 0px;
 	padding: 0px;
 	background-color: #10f;
-	border-radius: 10%;
+	border-radius: 0%;
 	display: inline-block;
-	cursor:pointer;
+	cursor: pointer;
 	pointer-events: auto; 
 
 }
@@ -120,7 +120,7 @@ option {
 }
 
 .infoText{
-    color: #111;
+    color: #ffffff;
     position: absolute;
 	width: 100%;
     min-height: 100%;
@@ -133,7 +133,7 @@ option {
 	font-weight: 400;
 	z-index: 9;
 	display: none;
-	background-color: rgba(255, 0, 0, 0.8);
+	background-color: rgb(0, 0, 255);
 }
 
 .infoText h1 {
@@ -156,7 +156,7 @@ option {
 
 .infoText a{
 	text-decoration: underline;
-	color: #111;
+	color: #ffffff;
 }
 
 .infoText p {
