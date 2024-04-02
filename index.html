@@ -283,7 +283,7 @@
 
 
 				// Initialise WebGL
-				try {
+				/*try {
 
 					gl = canvas.getContext( 'experimental-webgl', { preserveDrawingBuffer: true } );
 
@@ -301,7 +301,7 @@
 					gl.bindBuffer( gl.ARRAY_BUFFER, buffer );
 					gl.bufferData( gl.ARRAY_BUFFER, new Float32Array( [ - 1.0, - 1.0, 1.0, - 1.0, - 1.0, 1.0, 1.0, - 1.0, 1.0, 1.0, - 1.0, 1.0 ] ), gl.STATIC_DRAW );
 					surface.buffer = gl.createBuffer();
-				}
+				}*/
 				clearTimeout(compileTimer);
 				compileTimer = setTimeout(compile, 500);
 		
