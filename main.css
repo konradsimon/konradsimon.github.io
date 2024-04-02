@@ -7,13 +7,13 @@
 @font-face {
 	font-family: gt;
 	src: url(GT-Flexa-Mono-Light-Trial.otf);
-	font-weight: light;
+	font-weight: 600;
 	}
 
 @font-face {
 	font-family: gt;
 	src: url(GT-Flexa-Mono-Regular-Trial.otf);
-	font-weight: regular;
+	font-weight: 400;
 	}
 
 @font-face {
@@ -25,7 +25,7 @@
 @font-face {
 	font-family: gt;
 	src: url(GT-Flexa-Mono-Black-Trial.otf);
-	font-weight: black;
+	font-weight: 300;
 	}
 
 
@@ -66,13 +66,13 @@ option {
 }
 
 #rightMenu{
-	margin: 3vmax;
+	margin: 0vmax;
     display: flex;
     position: fixed;
     right: 0px;
-    top: 0px;
-    flex-direction:column;
-    align-content: flex-end;
+    top: 80%;
+    //flex-direction:column;
+    //align-content: flex-end;
     z-index: 10;
     pointer-events: none; 
 
@@ -80,7 +80,7 @@ option {
 
 .dot {
 	height: 6vmax;
-	width: 6vmax;
+	width: 100vmax;
 	margin: 0px;
 	padding: 0px;
 	background-color: #10f;
@@ -91,16 +91,6 @@ option {
 
 }
 
-.menuItem {
-
-	pointer-events: none; 
-    margin:0px;
-    padding: 0px;
-    text-align: left;
-    color: #9A9A9A;
-	font-family: gt;
-	font-size: 3vh;
-}
 
 
 
@@ -120,24 +110,24 @@ option {
 }
 
 .infoText{
-   	 color: #ffffff;
-   	 position: absolute;
+    color: #ffffff;
+    position: absolute;
 	width: 100%;
-   	 min-height: 100%;
+    min-height: 100%;
 	padding-left: 0vmin;
 	padding-right: 0vmin;
 	padding-top: 3vmax;
-    	font-family: gt;
+    font-family: gt;
 	text-decoration: none;
 	font-size: 2vh;
-	font-weight: bold;
+	font-weight: 400;
 	z-index: 9;
 	display: none;
 	background-color: rgb(0, 0, 255);
 }
 
 .infoText h1 {
-    font-weight: regular;
+    font-weight: 600;
     font-size: 4vh;
     padding-left: 0px;
     margin-left: 9.8vmin;
@@ -145,7 +135,7 @@ option {
 
 .infoText h2 {
 	font-size: 2vh;
-	font-weight: regular;
+	font-weight: 400;
     line-height: 1vmax;
     margin-left: 10vmin;
     margin-right: 10vmin;
@@ -170,12 +160,12 @@ option {
 
 
 .p1{
-	font-weight: regular;
+	font-weight: 600;
 	font-size: 2.5vh;
 }
 
 .p0{
-	font-weight: regular;
+	font-weight: 300;
 	font-size: 1vh;
 }
 
