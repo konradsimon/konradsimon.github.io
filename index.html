@@ -7,11 +7,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>404.zero</title>
 		<!-- PRELOAD FONTS -->
-		<link rel="preload" href="fonts/IBMPlexMono-Medium.ttf" as="font" crossorigin="anonymous" />
-		<link rel="preload" href="fonts/IBMPlexMono-SemiBold.ttf" as="font" crossorigin="anonymous" />
-		<link rel="preload" href="fonts/IBMPlexMono-Regular.ttf" as="font" crossorigin="anonymous" />
-		<link rel="preload" href="fonts/IBMPlexMono-Bold.ttf" as="font" crossorigin="anonymous" />
-		<link rel="preload" href="fonts/IBMPlexMono-Light.ttf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/GT-Flexa-Mono-Medium-Trial.otf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/GT-Flexa-Mono-Black-Trial.otf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/GT-Flexa-Mono-Light-Trial.otf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/GT-Flexa-Mono-Regular-Trial.otf" as="font" crossorigin="anonymous" />
+		<link rel="preload" href="fonts/GT-Flexa-Mono-Bold-Trial.otf" as="font" crossorigin="anonymous" />
 
 		<!-- FAVICON -->
 		<link rel="icon" href="ico.svg">
@@ -40,8 +40,7 @@
 	<body style="cursor: default;">
 		
 		<canvas id = 'canvas'></canvas>
-		<img id="image" src="landing.png" alt="Beschreibung des Bildes">
-
+		
 		<div id='bio' class='infoText'>
 			<!-- <p class="p1">404.zero</p> -->
 			<!-- <h1>404.zero<h1> -->
@@ -141,17 +140,19 @@
 			<div class="menuItem"><a href ="https://www.youtube.com/@404zero" class = "link">youtube</a></div> -->
 		</div >
 
-		
+		<img src="landing.jpg" id='image' alt="Konrad Simon" style="width: 100%; height: auto;">
+		<div id='bio' class='infoText'>
 		<audio id="noiseAudio1" loop="true" src="noiseA.mp3" crossorigin="anonymous"></audio>
 		<audio id="noiseAudio2" loop="true" src="noiseB.mp3" crossorigin="anonymous"></audio>
 
 
-		<script id="example" type="x-shader/x-fragment">
+	
 
 			
 
-
 </script>
+
+		
 
 		<script>
 
@@ -187,6 +188,11 @@
 			surface = { centerX: 0, centerY: 0, width: 1, height: 1, isPanning: false, isZooming: false, lastX: 0, lastY: 0 },
 			frontTarget, backTarget, screenProgram, getWebGL, compileOnChangeCode = true;
 			var lastX,lastY;
+
+			var lfoPhase = 0;
+			var lfo1 = 0;
+			var lastTime = performance.now();
+			var doAnimate = true;
 			
 			//audio
 			var audioCtx1,audioCtx2;
@@ -207,8 +213,38 @@
 					if (cols[i].id!= 'redDotParent') cols[i].style.display = show;
 				}
 			}
+
+			function initAudio(){
+				audioCtx1 = new AudioContext();
+				noiseAudio1Source = audioCtx1.createMediaElementSource(noiseAudio1);
+				noiseAudio1Gain = audioCtx1.createGain();
+				noiseAudio1Gain.gain.value = 0;
+				noiseAudio1Source.connect(noiseAudio1Gain);
+				noiseAudio1Gain.connect(audioCtx1.destination);
+
+				audioCtx2 = new AudioContext();
+				noiseAudio2Source = audioCtx2.createMediaElementSource(noiseAudio2);
+				noiseAudio2Gain = audioCtx2.createGain();
+				noiseAudio2Gain.gain.value = 0;
+				noiseAudio2Source.connect(noiseAudio2Gain);
+				noiseAudio2Gain.connect(audioCtx2.destination);
 			}
 
+
+
+			function playAudio(play){
+				if (!play){
+					noiseAudio1.pause();
+					noiseAudio2.pause();
+				
+				}
+				else{
+					if(!audioCtx1) initAudio();
+					noiseAudio1.play();
+					noiseAudio2.play();
+					
+				}
+			}
 
 
 			function noDragClick(){
@@ -249,7 +285,7 @@
 					if (!doAnimate){
 						playAudio(false)
 						document.getElementById('bio').style.display = 'block';
-						document.getElementById('redDot').style.backgroundColor = '#111';
+						document.getElementById('redDot').style.backgroundColor = '#FFF';
 						showHideMenu('none');
 
 					}
@@ -258,7 +294,7 @@
 							playAudio(true);
 						}
 						document.getElementById('bio').style.display = 'none';
-						document.getElementById('redDot').style.backgroundColor = '#F00';
+						document.getElementById('redDot').style.backgroundColor = '#00F';
 						showHideMenu('block');
 						
 					}
@@ -589,7 +625,6 @@
 			function render() {
 
 				if ( !currentProgram ) return;
-				image.src = "landing.png";
 
 				parameters.time = Date.now() - parameters.startTime;
 
