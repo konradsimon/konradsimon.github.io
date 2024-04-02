@@ -95,7 +95,7 @@
 			<p><a href="" >Bio</a></p>
 			<p><a href="" >Press</a></p> -->
 
-
+		<p><a href="impressum.html">Impressum</a></p>
 		<p class="p0">©Konrad Simon 2024</p>
 
 	</div>
@@ -113,12 +113,8 @@
 			<div class="menuItem"><a href ="https://www.youtube.com/@404zero" class = "link">youtube</a></div> -->
 	</div>
 
-	<img src="landing.png" id='image' alt="Konrad Simon" style="width: 100%; height: auto;">
+	<img src="landing.png" id='image' alt="Konrad Simon" style="width: 100vmax; height: auto;">
 	<div id='bio' class='infoText'>
-		<audio id="noiseAudio1" loop="true" src="noiseA.mp3" crossorigin="anonymous"></audio>
-		<audio id="noiseAudio2" loop="true" src="noiseB.mp3" crossorigin="anonymous"></audio>
-
-
 
 
 
@@ -126,7 +122,6 @@
 		</script>
 
 		<script>
-		
 			var compileTimer, errorLines = [];
 			var code, canvas, gl, buffer, currentProgram, vertexPosition, screenVertexPosition, panButton,
 			parameters = { startTime: Date.now(), time: 0, mouseX: 0.3, mouseY: 0.9, screenWidth: 0, screenHeight: 0, sound: 0 },
@@ -173,6 +168,7 @@
 
 				canvas = document.getElementById( 'image' );
 
+				
 			}
 
 			function onWindowResize( event ) {
