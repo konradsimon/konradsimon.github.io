@@ -21,7 +21,7 @@
 	<meta name="revisit-after" content="2 days" />
 
 
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="style.css">
 	<title>Konrad Simon</title>
 	<!-- PRELOAD FONTS -->
 	<link rel="preload" href="GT-Flexa-Mono-Medium-Trial.otf" as="font" crossorigin="anonymous" />
@@ -120,26 +120,7 @@
 
 
 		</script>
-		<script>
-    animation = '06_Mouse2D.js';
-    window.addEventListener('load', function() {
-      // examples.init('../../assets/examples/en/21_Input/06_Mouse2D.js');
-      if (false) {
-        var isMobile = window.matchMedia("only screen and (max-width: 767px)");
-        // isMobile is true if viewport is less than 768 pixels wide
-        document.getElementById('exampleFrame').style.display = 'none';
-        if (isMobile.matches) {
-          document.getElementById('notMobile-message').style.display = 'none';
-          document.getElementById('isMobile-displayButton').style.display = 'block';
-        } else {
-          document.getElementById('notMobile-message').style.display = 'block';
-          document.getElementById('isMobile-displayButton').style.display = 'none';
-          document.getElementById('runButton').style.display = 'none';
-          document.getElementById('resetButton').style.display = 'none';
-          document.getElementById('copyButton').style.display = 'none';
-        }
-      }
-    }, true);
+
   </script>
 		<script>
 			var compileTimer, errorLines = [];
@@ -186,7 +167,7 @@
 					}
 				}, false );
 
-				canvas = document.getElementById( 'animation' );
+				canvas = document.getElementById( 'image' );
 
 				
 			}
