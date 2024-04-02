@@ -120,17 +120,17 @@ option {
 }
 
 .infoText{
-    color: #ffffff;
-    position: absolute;
+   	 color: #ffffff;
+   	 position: absolute;
 	width: 100%;
-    min-height: 100%;
+   	 min-height: 100%;
 	padding-left: 0vmin;
 	padding-right: 0vmin;
 	padding-top: 3vmax;
-    font-family: gt;
+    	font-family: gt;
 	text-decoration: none;
 	font-size: 2vh;
-	font-weight: 400;
+	font-weight: bold;
 	z-index: 9;
 	display: none;
 	background-color: rgb(0, 0, 255);
