@@ -177,9 +177,16 @@ canvas{
 	margin: 0px;
 	padding: 0px;
 	z-index: 1;
+	color: #000000;
 }
 
-
+iframe {
+    display: block;       /* iframes are inline by default */
+    background: #000;
+    border: none;         /* Reset default border */
+    height: 100vh;        /* Viewport-relative units */
+    width: 100vw;
+}
 
 /*@media only screen and (orientation: portrait){
 	.menuItem{
