@@ -91,7 +91,7 @@
 			<div class="menuItem"><a href ="https://www.youtube.com/@404zero" class = "link">youtube</a></div> -->
 	</div>
 
-	<img src="landing.png" id='image' alt="Konrad Simon" style="width: 100vmax; height: auto;">
+	
 	<div id='bio' class='infoText'>
 
 
@@ -128,7 +128,13 @@
 
 			function init() {
 				document.getElementById('bio').style.display = 'block';
+				document.getElementById('blueRect').style.backgroundColor = '#FFF';
+				document.getElementById('blueRect').addEventListener('click',function ( event ) {
+					
+					window.open("https://konrad-simon.com/","_self")
+
 			
+				}, false );
 
 				canvas = document.getElementById( 'image' );
 
