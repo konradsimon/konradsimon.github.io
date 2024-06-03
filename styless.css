@@ -124,6 +124,12 @@ option {
 	display: none;
 	background-color: rgb(0, 0, 255);
 }
+img {
+    max-width: 25%;
+    max-height:15%;
+	margin-right: 9.8vmin;
+    float: right;
+}
 
 .infoText h1 {
     font-weight: 600;
@@ -137,10 +143,11 @@ option {
 	font-weight: 400;
     line-height: 1vmax;
     margin-left: 10vmin;
-    margin-right: 10vmin;
+    margin-right: 80vmin;
     margin-block-start: 0px;
     margin-block-end: 2vmin;
     line-height: normal;
+	float: left;
 }
 
 .infoText a{
@@ -206,7 +213,3 @@ iframe {
 
 	}
 }*/
-
-
-
-
