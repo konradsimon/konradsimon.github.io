@@ -1,6 +1,6 @@
 @font-face {
 	font-family: gt;
-	src: url("fonts/NotoSansMono-Medium.ttf");
+	src: url("fonts/Haskoy-Regular.ttf");
 	}
 
 @font-face {
@@ -11,13 +11,13 @@
 
 @font-face {
 	font-family: gt;
-	src: url("fonts/NotoSansMono-Regular.ttf");
+	src: url("fonts/Haskoy-Regular.ttf");
 	font-weight: normal;
 	}
 
 @font-face {
 	font-family: gt;
-	src: url("fonts/NotoSansMono-Bold.ttf");
+	src: url("fonts/Project-Blackbird.otf");
 	font-weight: bold;
 	}
 
@@ -119,7 +119,6 @@ option {
     font-family: gt;
 	text-decoration: none;
 	font-size: 2vh;
-	font-weight: 400;
 	z-index: 9;
 	display: none;
 	background-color: rgb(0, 0, 255);
@@ -132,7 +131,7 @@ img {
 }
 
 .infoText h1 {
-    font-weight: 600;
+    font-weight: bold;
     font-size: 4vh;
     padding-left: 0px;
     margin-left: 9.8vmin;
