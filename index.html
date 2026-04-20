@@ -96,7 +96,6 @@
 		<br>
 		
 		<p><a href="impressum.html">Impressum</a></p>
-		<p><a href="admin.html">Admin</a></p>
 		<br>
 		<p>© Konrad Simon 2026</p>
 	</div>
@@ -192,6 +191,8 @@
 				if (window.scrollY <= 2 && bio.style.display !== 'none' && Date.now() - lastOpenedAt > 700) {
 					bio.style.display = 'none';
 					blueRect.style.backgroundColor = '#00F';
+					// if we hid the cables animation via skipIntro, restore it when leaving projects
+					if (iframe) iframe.style.display = '';
 				}
 			}, { passive: true });
 
@@ -200,6 +201,7 @@
 				if (isVisible) {
 					bio.style.display = 'none';
 					blueRect.style.backgroundColor = '#00F';
+					if (iframe) iframe.style.display = '';
 				} else {
 					openPanel();
 				}
