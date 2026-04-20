@@ -33,14 +33,20 @@
       "published": true,
       "slug": "eleo",
       "category": "visuals-and-light",
-      "title": "eleo",
-      "subtitle": "test",
+      "title": "ELEO",
+      "subtitle": "Audiovisual Lightshow",
       "photos": [
         {
           "image": "/assets/uploads/img_4326.png",
-          "credit": "test"
+          "credit": "Luca Spanier"
+        },
+        {
+          "image": "/assets/uploads/eleo_250612_palastrauschen-12.jpg",
+          "credit": "Laura Rukavina"
         }
-      ]
+      ],
+      "role": "Light Designer, Creative Direction, TouchDesigner Developer",
+      "credits": "Nora Bögel – Music, Creative Direction"
     }
   ]
 }
