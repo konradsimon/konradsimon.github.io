@@ -1,15 +1,23 @@
 {
   "projects": [
     {
-      "published": true,
-      "slug": "test",
-      "category": "music",
-      "title": "Test",
-      "subtitle": "hallo",
-      "photos": [
-        "/assets/uploads/koda-release-konzert-98.jpg"
+      "participants": [
+        "Florian Seefing"
       ],
-      "videoUrl": "https://www.youtube.com/watch?v=SdbWXNyT3Yg"
+      "photos": [
+        "/assets/uploads/1.png",
+        "/assets/uploads/11.png",
+        "/assets/uploads/15.png",
+        "/assets/uploads/7.png"
+      ],
+      "slug": "kodakosmosvideo",
+      "published": true,
+      "videoUrl": "https://www.youtube.com/watch?v=SdbWXNyT3Yg",
+      "role": "Floor Set Lighting Design",
+      "subtitle": "Live Music Video Production",
+      "title": "Koda Kosmos live on tape",
+      "description": "Live on tape music video prodection for Koda Kosmos. ",
+      "category": "visuals-and-light"
     }
   ]
 }
