@@ -118,6 +118,8 @@
 		(function () {
 			const gate = document.getElementById('introGate');
 			const btn = document.getElementById('enterBtn');
+			const blueRect = document.getElementById('blueRect');
+			const bio = document.getElementById('bio');
 
 			function enterSite() {
 				if (!gate) return;
@@ -188,13 +190,29 @@
 				}
 			} catch (e) { }
 
+			// If coming from a project page, skip the intro gate once.
+			try {
+				const sp = new URLSearchParams(window.location.search);
+				if (sp.get('skipIntro') === '1') enterSite();
+			} catch (e) { }
+
+			// Default state: rectangle is blue (clickable).
+			if (blueRect) blueRect.style.backgroundColor = '#00F';
+
+			// When scrolling back to the very top (animation visible), reset rectangle to blue and close panel.
+			window.addEventListener('scroll', () => {
+				if (!bio || !blueRect) return;
+				if (window.scrollY <= 2 && bio.style.display !== 'none') {
+					bio.style.display = 'none';
+					blueRect.style.backgroundColor = '#00F';
+				}
+			}, { passive: true });
+
 			document.getElementById('blueRect').addEventListener('click', function () {
 				// If intro gate is still visible, enter first so the UI becomes interactive.
 				if (gate && gate.style.display !== 'none' && gate.style.pointerEvents !== 'none') {
 					enterSite();
 				}
-				const bio = document.getElementById('bio');
-				const blueRect = document.getElementById('blueRect');
 				const isVisible = bio.style.display !== 'none';
 				bio.style.display = isVisible ? 'none' : 'block';
 				blueRect.style.backgroundColor = isVisible ? '#00F' : '#FFF';

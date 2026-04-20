@@ -172,17 +172,21 @@ function buildCarousel(photos) {
     slides.forEach((s) => io.observe(s));
   }
 
-  const btnPrev = el("button", { class: "carouselBtn", type: "button", text: "Prev" });
-  const btnNext = el("button", { class: "carouselBtn", type: "button", text: "Next" });
-
   function scrollByOne(dir) {
     const next = Math.max(0, Math.min(slides.length - 1, activeIndex + dir));
     slides[next].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
   }
-  btnPrev.addEventListener("click", () => scrollByOne(-1));
-  btnNext.addEventListener("click", () => scrollByOne(1));
 
-  const controls = el("div", { class: "carouselControls" }, [btnPrev, dotsWrap, btnNext]);
+  // Keyboard navigation when focused / hovered
+  viewport.tabIndex = 0;
+  viewport.setAttribute("role", "region");
+  viewport.setAttribute("aria-label", "Project photos");
+  viewport.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") scrollByOne(-1);
+    if (e.key === "ArrowRight") scrollByOne(1);
+  });
+
+  const controls = el("div", { class: "carouselControls" }, [dotsWrap]);
   const root = el("div", { class: "carousel" }, [viewport, controls]);
   return root;
 }

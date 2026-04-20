@@ -47,26 +47,12 @@ body.projectBody {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .projectNav a {
-  color: var(--fg);
-  text-decoration: none;
-  background-image: linear-gradient(to right, var(--accent), var(--accent));
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  padding-bottom: 2px;
-}
-.projectNav a:hover {
-  background-image: none;
-  background-size: initial;
-  background: var(--accent);
-  color: #fff;
-  padding: 6px 8px;
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .projectNavTitle {
@@ -145,8 +131,8 @@ body.projectBody {
   margin: 0 0 12px;
   font-family: blackbird, haskoy, sans-serif;
   font-size: 18px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-transform: none;
 }
 
 .sectionBody {
@@ -204,32 +190,20 @@ body.projectBody {
 
 .carouselSlide img {
   width: 100%;
-  height: min(76vh, 820px);
-  object-fit: contain;
+  height: min(78vh, 900px);
+  object-fit: cover;
+  object-position: center;
   display: block;
   background: #000;
 }
 
 .carouselControls {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px 12px;
   border-top: 1px solid var(--hairline);
   background: rgba(0, 0, 0, 0.55);
-}
-
-.carouselBtn {
-  border: 1px solid var(--hairline);
-  background: rgba(0, 0, 0, 0.45);
-  color: var(--fg);
-  font: inherit;
-  padding: 6px 10px;
-  border-radius: var(--radius);
-  cursor: pointer;
-}
-.carouselBtn:hover {
-  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .carouselDots {
@@ -237,7 +211,6 @@ body.projectBody {
   gap: 8px;
   align-items: center;
   justify-content: center;
-  flex: 1;
 }
 
 .dot {
@@ -249,8 +222,8 @@ body.projectBody {
   cursor: pointer;
 }
 .dot.isActive {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
 .notFound {
