@@ -11,6 +11,10 @@
       // Remove later if you want, but it's harmless.
       window.addEventListener("message", (e) => {
         try {
+          if (typeof e.data === "string" && e.data.startsWith("authorization:github:")) {
+            console.log("[decap-debug] oauth message received", { origin: e.origin, dataPrefix: e.data.slice(0, 40) + "…" });
+            return;
+          }
           console.log("[decap-debug] postMessage received", { origin: e.origin, data: e.data });
         } catch {}
       });
