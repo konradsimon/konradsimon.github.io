@@ -38,8 +38,15 @@ collections:
               - { name: "title", label: "Title", widget: "string", required: true }
               - { name: "subtitle", label: "Subtitle", widget: "string", required: false }
               - { name: "role", label: "My function / role", widget: "string", required: false }
-              - { name: "participants", label: "Participants", widget: "list", required: false, hint: "Names / credits" }
+              - { name: "credits", label: "Credits", widget: "string", required: false, hint: "e.g. Name 1, Name 2 (spaces allowed)" }
               - { name: "description", label: "Description", widget: "text", required: false }
-              - { name: "photos", label: "Photos", widget: "list", required: false, field: { name: "image", label: "Image", widget: "image" } }
+              - name: "photos"
+                label: "Photos"
+                widget: "list"
+                required: false
+                summary: "{{fields.credit}}"
+                fields:
+                  - { name: "image", label: "Image", widget: "image", required: true }
+                  - { name: "credit", label: "Photo credit", widget: "string", required: false }
               - { name: "videoUrl", label: "Video link", widget: "string", required: false }
 

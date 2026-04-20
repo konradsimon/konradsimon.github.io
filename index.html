@@ -111,6 +111,7 @@
 		(function () {
 			const blueRect = document.getElementById('blueRect');
 			const bio = document.getElementById('bio');
+			const iframe = document.getElementById('iframe');
 
 			let cmsLoaded = false;
 			let lastOpenedAt = 0;
@@ -158,6 +159,32 @@
 			// Default state: rectangle is blue (clickable).
 			if (blueRect) blueRect.style.backgroundColor = '#00F';
 
+			function openPanel() {
+				const isVisible = bio.style.display !== 'none';
+				if (!isVisible) {
+					bio.style.display = 'block';
+					blueRect.style.backgroundColor = '#FFF';
+					lastOpenedAt = Date.now();
+					loadCmsProjects();
+					requestAnimationFrame(() => {
+						try {
+							bio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						} catch (e) {
+							window.scrollTo(0, 0);
+						}
+					});
+				}
+			}
+
+			// If coming back from a project page, skip the cables animation and go straight to projects.
+			try {
+				const sp = new URLSearchParams(window.location.search);
+				if (sp.get('skipIntro') === '1') {
+					if (iframe) iframe.style.display = 'none';
+					openPanel();
+				}
+			} catch (e) { }
+
 			// When scrolling back to the very top (animation visible), reset rectangle to blue and close panel.
 			window.addEventListener('scroll', () => {
 				if (!bio || !blueRect) return;
@@ -170,20 +197,11 @@
 
 			document.getElementById('blueRect').addEventListener('click', function () {
 				const isVisible = bio.style.display !== 'none';
-				bio.style.display = isVisible ? 'none' : 'block';
-				blueRect.style.backgroundColor = isVisible ? '#00F' : '#FFF';
-
-				// When opening, auto-scroll to the top of the blue panel.
-				if (!isVisible) {
-					lastOpenedAt = Date.now();
-					loadCmsProjects();
-					requestAnimationFrame(() => {
-						try {
-							bio.scrollIntoView({ behavior: 'smooth', block: 'start' });
-						} catch (e) {
-							window.scrollTo(0, 0);
-						}
-					});
+				if (isVisible) {
+					bio.style.display = 'none';
+					blueRect.style.backgroundColor = '#00F';
+				} else {
+					openPanel();
 				}
 			});
 		})();

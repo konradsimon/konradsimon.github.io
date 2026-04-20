@@ -100,8 +100,10 @@ function buildMeta(project) {
   const rows = [];
   if (asText(project.role)) rows.push(["Role", asText(project.role)]);
 
+  const creditsText = asText(project.credits);
   const participants = Array.isArray(project.participants) ? project.participants.filter(Boolean).map(asText).filter(Boolean) : [];
-  if (participants.length) rows.push(["Credits", participants.join(", ")]);
+  if (creditsText) rows.push(["Credits", creditsText]);
+  else if (participants.length) rows.push(["Credits", participants.join(", ")]);
 
   if (asText(project.videoUrl)) {
     const url = asText(project.videoUrl);
@@ -127,14 +129,29 @@ function buildMeta(project) {
   return meta;
 }
 
+function normalizePhotos(raw) {
+  const list = Array.isArray(raw) ? raw : [];
+  return list
+    .map((p) => {
+      if (!p) return null;
+      if (typeof p === "string") return { src: asText(p), credit: "" };
+      const src = asText(p.image || p.src || "");
+      const credit = asText(p.credit || "");
+      if (!src) return null;
+      return { src, credit };
+    })
+    .filter(Boolean);
+}
+
 function buildCarousel(photos) {
   const viewport = el("div", { class: "carouselViewport" });
   const track = el("div", { class: "carouselTrack" });
   viewport.append(track);
 
-  const slides = photos.map((src) => {
+  const slides = photos.map((p) => {
     const slide = el("div", { class: "carouselSlide" });
-    slide.append(el("img", { src, alt: "" }));
+    slide.append(el("img", { src: p.src, alt: "" }));
+    if (p.credit) slide.append(el("div", { class: "photoCredit", text: p.credit }));
     track.append(slide);
     return slide;
   });
@@ -232,7 +249,7 @@ function renderProject(project) {
     );
   }
 
-  const photos = Array.isArray(project.photos) ? project.photos.map(asText).filter(Boolean) : [];
+  const photos = normalizePhotos(project.photos);
   if (photos.length) {
     app.append(
       el("section", { class: "section" }, [
