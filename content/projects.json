@@ -1,0 +1,10 @@
+{
+  "projects": [
+    {
+      "slug": "test",
+      "category": "visuals-and-light",
+      "title": "Test",
+      "subtitle": "hallo"
+    }
+  ]
+}
