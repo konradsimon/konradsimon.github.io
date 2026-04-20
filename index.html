@@ -54,13 +54,6 @@
 
 	<iframe id="iframe" src="https://cables.gl/view/bLZwAP" allow="autoplay"></iframe>
 
-	<div id="introGate" style="position:fixed;inset:0;z-index:20;background:#000;display:grid;place-items:end center;padding:28px 20px;">
-		<div style="width:min(1200px,100%);display:flex;justify-content:space-between;align-items:center;gap:16px;">
-			<div style="color:rgba(255,255,255,0.68);font-family:haskoy;font-size:14px;">Interactive welcome. Press Enter to continue.</div>
-			<button id="enterBtn" type="button" style="border:1px solid #00f;background:#00f;color:#fff;font:inherit;font-family:haskoy;padding:10px 14px;border-radius:10px;cursor:pointer;">Enter</button>
-		</div>
-	</div>
-
 	<div id="bio" class="infoText" style="display: none;">
 		<h1>Konrad Simon</h1>
 		<p>
@@ -105,7 +98,7 @@
 		<p><a href="impressum.html">Impressum</a></p>
 		<p><a href="admin.html">Admin</a></p>
 		<br>
-		<p>© Konrad Simon 2025</p>
+		<p>© Konrad Simon 2026</p>
 	</div>
 
 	<div id="rightMenu">
@@ -116,27 +109,11 @@
 
 	<script>
 		(function () {
-			const gate = document.getElementById('introGate');
-			const btn = document.getElementById('enterBtn');
 			const blueRect = document.getElementById('blueRect');
 			const bio = document.getElementById('bio');
 
-			function enterSite(immediate) {
-				if (!gate) return;
-				try { sessionStorage.setItem('hasEntered', '1'); } catch (e) { }
-				if (immediate) {
-					gate.style.display = 'none';
-					gate.style.opacity = '0';
-					gate.style.pointerEvents = 'none';
-					return;
-				}
-				gate.style.transition = 'opacity 260ms ease';
-				gate.style.opacity = '0';
-				gate.style.pointerEvents = 'none';
-				setTimeout(() => { gate.style.display = 'none'; }, 280);
-			}
-
 			let cmsLoaded = false;
+			let lastOpenedAt = 0;
 			async function loadCmsProjects() {
 				if (cmsLoaded) return;
 				cmsLoaded = true;
@@ -178,53 +155,27 @@
 				} catch (e) { }
 			}
 
-			btn && btn.addEventListener('click', enterSite);
-			// Also allow clicking anywhere on the intro to enter
-			gate && gate.addEventListener('click', (e) => {
-				// avoid double-trigger if clicking the button
-				if (e.target && e.target.id === 'enterBtn') return;
-				enterSite();
-			});
-			window.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter') enterSite();
-				if (e.key === 'Escape') enterSite();
-			});
-
-			// If coming from a project page, skip the intro gate once.
-			try {
-				const sp = new URLSearchParams(window.location.search);
-				if (sp.get('skipIntro') === '1') enterSite(true);
-			} catch (e) { }
-
-			try {
-				if (sessionStorage.getItem('hasEntered') === '1') {
-					enterSite(true);
-				}
-			} catch (e) { }
-
 			// Default state: rectangle is blue (clickable).
 			if (blueRect) blueRect.style.backgroundColor = '#00F';
 
 			// When scrolling back to the very top (animation visible), reset rectangle to blue and close panel.
 			window.addEventListener('scroll', () => {
 				if (!bio || !blueRect) return;
-				if (window.scrollY <= 2 && bio.style.display !== 'none') {
+				// Avoid immediately closing right after opening (auto-scroll).
+				if (window.scrollY <= 2 && bio.style.display !== 'none' && Date.now() - lastOpenedAt > 700) {
 					bio.style.display = 'none';
 					blueRect.style.backgroundColor = '#00F';
 				}
 			}, { passive: true });
 
 			document.getElementById('blueRect').addEventListener('click', function () {
-				// If intro gate is still visible, enter first so the UI becomes interactive.
-				if (gate && gate.style.display !== 'none' && gate.style.pointerEvents !== 'none') {
-					enterSite();
-				}
 				const isVisible = bio.style.display !== 'none';
 				bio.style.display = isVisible ? 'none' : 'block';
 				blueRect.style.backgroundColor = isVisible ? '#00F' : '#FFF';
 
 				// When opening, auto-scroll to the top of the blue panel.
 				if (!isVisible) {
+					lastOpenedAt = Date.now();
 					loadCmsProjects();
 					requestAnimationFrame(() => {
 						try {

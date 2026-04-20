@@ -81,6 +81,21 @@ option {
 
 }
 
+@media (max-width: 600px) {
+	/* thicker / more readable on mobile */
+	.infoText {
+		font-size: 2.2vh;
+	}
+	.infoText p {
+		font-weight: 600;
+	}
+	/* bigger click target for the rectangle */
+	.rect {
+		height: 6vmax;
+		width: 30vmax;
+	}
+}
+
 .infoText{
     color: #ffffff;
     position: absolute;
