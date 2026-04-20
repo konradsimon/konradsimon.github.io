@@ -6,6 +6,13 @@
       "title": "Test",
       "subtitle": "hallo",
       "published": true
+    },
+    {
+      "published": true,
+      "slug": "hallo",
+      "category": "music",
+      "title": "hallo",
+      "subtitle": "kbj2ebkj"
     }
   ]
 }
