@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-static-devserver",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.mjs"
+  }
+}
+

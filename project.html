@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project – Konrad Simon</title>
+
+    <meta name="author" content="Konrad Simon" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" href="fonts/Haskoy-Regular.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="fonts/Project-Blackbird.otf" as="font" crossorigin="anonymous" />
+
+    <link rel="icon" href="icons/ico.svg" />
+    <link rel="apple-touch-icon" href="icons/favicon.png" />
+    <link rel="icon" type="image/png" href="icons/favicon16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="icons/favicon32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="icons/favicon96x96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/touch-ipad.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/touch-iphone.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/touch-ipad-ret.png" />
+  </head>
+
+  <body style="cursor: default;">
+    <canvas id="canvas"></canvas>
+
+    <div id="panel" class="infoText" style="display: block;">
+      <h1 id="projectTitle">Loading…</h1>
+      <div id="projectContent"></div>
+    </div>
+
+    <div id="rightMenu">
+      <div id="blueRectParent" class="menuItem">
+        <div id="blueRect" class="rect"></div>
+      </div>
+    </div>
+
+    <iframe id="iframe" src="https://cables.gl/view/bLZwAP" allow="autoplay"></iframe>
+
+    <script>
+      document.getElementById("blueRect").addEventListener("click", function () {
+        const panel = document.getElementById("panel");
+        const blueRect = document.getElementById("blueRect");
+        const isVisible = panel.style.display !== "none";
+        panel.style.display = isVisible ? "none" : "block";
+        blueRect.style.backgroundColor = isVisible ? "#00F" : "#FFF";
+      });
+    </script>
+
+    <script src="project.js"></script>
+  </body>
+</html>
+
