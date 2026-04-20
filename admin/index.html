@@ -7,10 +7,6 @@
   </head>
   <body>
     <script>
-      // Avoid fetching `config.yml` (some static hosts block .yml or return wrong MIME).
-      window.CMS_MANUAL_INIT = true;
-    </script>
-    <script>
       // Debug helper: shows whether the OAuth popup posts a message back.
       // Remove later if you want, but it's harmless.
       window.addEventListener("message", (e) => {
@@ -24,11 +20,6 @@
       );
     </script>
     <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
-    <script src="./config.js"></script>
-    <script>
-      // `window.DECAP_CMS_CONFIG` is defined in ./config.js
-      window.CMS.init({ config: window.DECAP_CMS_CONFIG });
-    </script>
   </body>
 </html>
 
