@@ -121,9 +121,15 @@
 			const blueRect = document.getElementById('blueRect');
 			const bio = document.getElementById('bio');
 
-			function enterSite() {
+			function enterSite(immediate) {
 				if (!gate) return;
 				try { sessionStorage.setItem('hasEntered', '1'); } catch (e) { }
+				if (immediate) {
+					gate.style.display = 'none';
+					gate.style.opacity = '0';
+					gate.style.pointerEvents = 'none';
+					return;
+				}
 				gate.style.transition = 'opacity 260ms ease';
 				gate.style.opacity = '0';
 				gate.style.pointerEvents = 'none';
@@ -184,16 +190,16 @@
 				if (e.key === 'Escape') enterSite();
 			});
 
-			try {
-				if (sessionStorage.getItem('hasEntered') === '1') {
-					enterSite();
-				}
-			} catch (e) { }
-
 			// If coming from a project page, skip the intro gate once.
 			try {
 				const sp = new URLSearchParams(window.location.search);
-				if (sp.get('skipIntro') === '1') enterSite();
+				if (sp.get('skipIntro') === '1') enterSite(true);
+			} catch (e) { }
+
+			try {
+				if (sessionStorage.getItem('hasEntered') === '1') {
+					enterSite(true);
+				}
 			} catch (e) { }
 
 			// Default state: rectangle is blue (clickable).

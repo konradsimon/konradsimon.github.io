@@ -195,6 +195,10 @@ body.projectBody {
   object-position: center;
   display: block;
   background: #000;
+  /* override global img styles from styles.css */
+  max-width: none;
+  max-height: none;
+  float: none;
 }
 
 .carouselControls {
