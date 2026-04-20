@@ -1,4 +1,15 @@
 {
-  "projects": []
+  "projects": [
+    {
+      "published": true,
+      "slug": "test",
+      "category": "music",
+      "title": "Test",
+      "subtitle": "hallo",
+      "photos": [
+        "/assets/uploads/koda-release-konzert-98.jpg"
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=SdbWXNyT3Yg"
+    }
+  ]
 }
-
