@@ -17,78 +17,225 @@ function el(tag, props = {}, children = []) {
   return node;
 }
 
-function addSection(container, heading, contentNode) {
-  container.append(el("p", { text: heading }));
-  container.append(contentNode);
-  container.append(el("br"));
+async function loadProject(slug) {
+  const res = await fetch("content/projects.json", { cache: "no-store" });
+  if (!res.ok) throw new Error("Projects index not found");
+  const data = await res.json();
+  const list = Array.isArray(data?.projects) ? data.projects : [];
+  const found = list.find((p) => String(p?.slug || "").trim() === slug);
+  if (!found) throw new Error(`Project not found: ${slug}`);
+  return found;
 }
 
-async function loadProject(slug) {
-  const res = await fetch(`content/projects/${encodeURIComponent(slug)}.json`, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Project not found: ${slug}`);
-  return await res.json();
+function asText(v) {
+  return String(v ?? "").trim();
+}
+
+function parseYouTubeId(url) {
+  try {
+    const u = new URL(url);
+    if (u.hostname === "youtu.be") return u.pathname.replace("/", "") || null;
+    if (u.hostname.endsWith("youtube.com")) {
+      if (u.pathname === "/watch") return u.searchParams.get("v");
+      if (u.pathname.startsWith("/embed/")) return u.pathname.split("/embed/")[1]?.split(/[/?#]/)[0] || null;
+      if (u.pathname.startsWith("/shorts/")) return u.pathname.split("/shorts/")[1]?.split(/[/?#]/)[0] || null;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function parseVimeoId(url) {
+  try {
+    const u = new URL(url);
+    if (!u.hostname.endsWith("vimeo.com")) return null;
+    const m = u.pathname.match(/\/(\d+)(?:$|\/)/);
+    return m ? m[1] : null;
+  } catch {
+    return null;
+  }
+}
+
+function buildVideoEmbed(url) {
+  const yt = parseYouTubeId(url);
+  if (yt) {
+    return el("iframe", {
+      src: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(yt)}`,
+      title: "YouTube video",
+      allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+      allowfullscreen: "",
+      loading: "lazy",
+      referrerpolicy: "strict-origin-when-cross-origin",
+    });
+  }
+  const vim = parseVimeoId(url);
+  if (vim) {
+    return el("iframe", {
+      src: `https://player.vimeo.com/video/${encodeURIComponent(vim)}`,
+      title: "Vimeo video",
+      allow: "autoplay; fullscreen; picture-in-picture",
+      allowfullscreen: "",
+      loading: "lazy",
+    });
+  }
+  if (/\.(mp4|webm)(\?|#|$)/i.test(url)) {
+    return el("video", { src: url, controls: "", playsinline: "", preload: "metadata" });
+  }
+  return null;
+}
+
+function buildDescription(text) {
+  const lines = String(text ?? "").split(/\r?\n/);
+  const p = el("p", { class: "sectionBody" });
+  for (let i = 0; i < lines.length; i++) {
+    if (i) p.append(el("br"));
+    p.append(document.createTextNode(lines[i]));
+  }
+  return p;
+}
+
+function buildMeta(project) {
+  const meta = el("div", { class: "projectMeta" });
+  const rows = [];
+  if (asText(project.role)) rows.push(["Role", asText(project.role)]);
+
+  const participants = Array.isArray(project.participants) ? project.participants.filter(Boolean).map(asText).filter(Boolean) : [];
+  if (participants.length) rows.push(["Credits", participants.join(", ")]);
+
+  if (asText(project.videoUrl)) {
+    const url = asText(project.videoUrl);
+    rows.push([
+      "Video",
+      el("a", { href: url, target: "_blank", rel: "noreferrer", text: url.replace(/^https?:\/\//, "") }),
+    ]);
+  }
+
+  if (!rows.length) {
+    meta.append(el("div", { class: "metaRow" }, [el("div", { class: "metaKey", text: "Info" }), el("div", { class: "metaVal", text: "—" })]));
+    return meta;
+  }
+
+  for (const [k, v] of rows) {
+    meta.append(
+      el("div", { class: "metaRow" }, [
+        el("div", { class: "metaKey", text: k }),
+        el("div", { class: "metaVal" }, [typeof v === "string" ? document.createTextNode(v) : v]),
+      ]),
+    );
+  }
+  return meta;
+}
+
+function buildCarousel(photos) {
+  const viewport = el("div", { class: "carouselViewport" });
+  const track = el("div", { class: "carouselTrack" });
+  viewport.append(track);
+
+  const slides = photos.map((src) => {
+    const slide = el("div", { class: "carouselSlide" });
+    slide.append(el("img", { src, alt: "" }));
+    track.append(slide);
+    return slide;
+  });
+
+  const dotsWrap = el("div", { class: "carouselDots" });
+  const dots = photos.map((_, idx) => {
+    const b = el("button", { class: "dot", type: "button", "aria-label": `Go to image ${idx + 1}` });
+    b.addEventListener("click", () => slides[idx].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" }));
+    dotsWrap.append(b);
+    return b;
+  });
+
+  function setActive(i) {
+    dots.forEach((d, idx) => d.classList.toggle("isActive", idx === i));
+  }
+
+  let activeIndex = 0;
+  setActive(0);
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        const best = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+        if (!best) return;
+        const idx = slides.indexOf(best.target);
+        if (idx >= 0 && idx !== activeIndex) {
+          activeIndex = idx;
+          setActive(activeIndex);
+        }
+      },
+      { root: viewport, threshold: [0.55, 0.75, 0.9] },
+    );
+    slides.forEach((s) => io.observe(s));
+  }
+
+  const btnPrev = el("button", { class: "carouselBtn", type: "button", text: "Prev" });
+  const btnNext = el("button", { class: "carouselBtn", type: "button", text: "Next" });
+
+  function scrollByOne(dir) {
+    const next = Math.max(0, Math.min(slides.length - 1, activeIndex + dir));
+    slides[next].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }
+  btnPrev.addEventListener("click", () => scrollByOne(-1));
+  btnNext.addEventListener("click", () => scrollByOne(1));
+
+  const controls = el("div", { class: "carouselControls" }, [btnPrev, dotsWrap, btnNext]);
+  const root = el("div", { class: "carousel" }, [viewport, controls]);
+  return root;
 }
 
 function renderProject(project) {
-  const titleEl = document.getElementById("projectTitle");
-  const content = document.getElementById("projectContent");
-  content.innerHTML = "";
+  const app = document.getElementById("app");
+  app.innerHTML = "";
 
-  const title = String(project.title || "").trim() || project.slug || "Project";
-  titleEl.textContent = title;
+  const title = asText(project.title) || asText(project.slug) || "Project";
+  const subtitle = asText(project.subtitle);
+
   document.title = `${title} – Konrad Simon`;
+  const navTitle = document.getElementById("navTitle");
+  if (navTitle) navTitle.textContent = title;
 
-  if (project.subtitle) {
-    content.append(el("p", { text: String(project.subtitle) }));
-    content.append(el("br"));
-  }
+  const heroLeft = el("div", {}, [
+    el("h1", { class: "projectTitle", text: title }),
+    subtitle ? el("p", { class: "projectSubtitle", text: subtitle }) : el("p", { class: "projectSubtitle", text: "" }),
+  ]);
 
-  content.append(
-    el("p", {}, [
-      el("a", { href: "index.html", text: "Home" }),
-      document.createTextNode(" · "),
-      el("a", { href: "admin/", text: "Admin" }),
-    ]),
-  );
-  content.append(el("br"));
+  const hero = el("section", { class: "projectHero" }, [heroLeft, buildMeta(project)]);
+  app.append(hero);
 
-  if (project.role) {
-    addSection(content, "Role", el("p", { text: String(project.role) }));
-  }
-
-  const participants = Array.isArray(project.participants) ? project.participants.filter(Boolean) : [];
-  if (participants.length) {
-    addSection(content, "Participants", el("p", { text: participants.join(", ") }));
-  }
-
-  if (project.videoUrl) {
-    const url = String(project.videoUrl);
-    addSection(
-      content,
-      "Video",
-      el("p", {}, [el("a", { href: url, target: "_blank", rel: "noreferrer", text: url })]),
+  if (asText(project.description)) {
+    app.append(
+      el("section", { class: "section" }, [
+        el("h2", { class: "sectionTitle", text: "About" }),
+        buildDescription(project.description),
+      ]),
     );
   }
 
-  if (project.description) {
-    const desc = String(project.description);
-    const lines = desc.split(/\r?\n/);
-    const p = el("p", {});
-    for (let i = 0; i < lines.length; i++) {
-      if (i) p.append(el("br"));
-      p.append(document.createTextNode(lines[i]));
-    }
-    addSection(content, "Description", p);
+  if (asText(project.videoUrl)) {
+    const url = asText(project.videoUrl);
+    const embed = buildVideoEmbed(url);
+    app.append(
+      el("section", { class: "section" }, [
+        el("h2", { class: "sectionTitle", text: "Video" }),
+        embed
+          ? el("div", { class: "videoFrame" }, [embed])
+          : el("p", { class: "sectionBody" }, [el("a", { href: url, target: "_blank", rel: "noreferrer", text: url })]),
+      ]),
+    );
   }
 
-  const photos = Array.isArray(project.photos) ? project.photos.filter(Boolean) : [];
+  const photos = Array.isArray(project.photos) ? project.photos.map(asText).filter(Boolean) : [];
   if (photos.length) {
-    content.append(el("p", { text: "Photos" }));
-    const wrap = el("p");
-    for (const src of photos) {
-      wrap.append(el("img", { src, alt: "" }));
-    }
-    content.append(wrap);
+    app.append(
+      el("section", { class: "section" }, [
+        el("h2", { class: "sectionTitle", text: "Photos" }),
+        buildCarousel(photos),
+      ]),
+    );
   }
 }
 
@@ -98,18 +245,22 @@ async function main() {
     const project = await loadProject(slug);
     renderProject(project);
   } catch (err) {
-    document.getElementById("projectTitle").textContent = "Not found";
-    const content = document.getElementById("projectContent");
-    content.innerHTML = "";
-    content.append(
-      el("p", {}, [
-        document.createTextNode("No project found for slug "),
-        el("strong", { text: slug }),
-        document.createTextNode("."),
+    document.title = "Not found – Konrad Simon";
+    const navTitle = document.getElementById("navTitle");
+    if (navTitle) navTitle.textContent = "Not found";
+    const app = document.getElementById("app");
+    app.innerHTML = "";
+    app.append(
+      el("div", { class: "notFound" }, [
+        el("h1", { class: "projectTitle", text: "Not found" }),
+        el("p", { class: "sectionBody" }, [
+          document.createTextNode("No project found for slug "),
+          el("strong", { text: slug }),
+          document.createTextNode("."),
+        ]),
+        el("div", { class: "section" }, [el("a", { href: "index.html", text: "Back to home" })]),
       ]),
     );
-    content.append(el("br"));
-    content.append(el("p", {}, [el("a", { href: "index.html", text: "Back to home" })]));
   }
 }
 

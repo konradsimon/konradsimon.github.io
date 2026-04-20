@@ -91,12 +91,7 @@ export default {
       if (url.pathname === "/auth") {
         // Decap expects this to redirect the browser to GitHub's authorize endpoint.
         const siteId = url.searchParams.get("site_id") || "site";
-        const requestOrigin = pickRequestOrigin(request, allowedOrigins);
-        if (!requestOrigin) {
-          throw new Error(
-            `Origin not allowed. Set OAUTH_ALLOWED_ORIGINS to include your site + localhost. Got Origin=${request.headers.get("Origin")}`,
-          );
-        }
+        const requestOrigin = pickRequestOrigin(request, allowedOrigins) || allowedOrigins[0];
         const statePayload = { siteId, origin: requestOrigin, t: Date.now() };
         const state = base64UrlEncode(JSON.stringify(statePayload));
 
@@ -153,14 +148,25 @@ export default {
   <body>
     <script>
       (function () {
-        var origin = ${JSON.stringify(stateOrigin)};
         var msg = ${JSON.stringify(message)};
-        if (window.opener) {
-          window.opener.postMessage(msg, origin);
-          window.close();
-        } else {
-          document.body.textContent = "Logged in. You can close this window.";
+        if (!window.opener) {
+          document.body.textContent = "No opener window. Keep this tab open.";
+          return;
         }
+
+        // Two-step handshake expected by Decap:
+        // 1) announce "authorizing:github"
+        // 2) wait for parent response, then send "authorization:github:success:..."
+        function receive(e) {
+          try {
+            window.removeEventListener("message", receive);
+            window.opener.postMessage(msg, e.origin);
+          } catch (err) {}
+          setTimeout(function () { window.close(); }, 250);
+        }
+
+        window.addEventListener("message", receive, false);
+        window.opener.postMessage("authorizing:github", "*");
       })();
     </script>
   </body>

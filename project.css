@@ -1,0 +1,262 @@
+:root {
+  --bg: #000;
+  --fg: #fff;
+  /* Kino direction: keep blue, use it sparingly */
+  --accent: #00f;
+  --muted: rgba(255, 255, 255, 0.68);
+  --hairline: rgba(255, 255, 255, 0.16);
+  --panel: rgba(0, 0, 0, 0.72);
+  --radius: 10px;
+}
+
+/* Keep global background, but make project content modern */
+body.projectBody {
+  background: var(--bg);
+}
+
+.projectPage {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  color: var(--fg);
+  font-family: haskoy, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+.projectPage a {
+  color: inherit;
+}
+
+.projectPage a:visited {
+  color: inherit;
+}
+
+.projectChrome {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  border-bottom: 1px solid var(--hairline);
+}
+
+.projectNav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+}
+
+.projectNav a {
+  color: var(--fg);
+  text-decoration: none;
+  background-image: linear-gradient(to right, var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+}
+.projectNav a:hover {
+  background-image: none;
+  background-size: initial;
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 8px;
+}
+
+.projectNavTitle {
+  font-family: blackbird, haskoy, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+  text-transform: none;
+}
+
+.projectWrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 42px 20px 96px;
+}
+
+.projectHero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 34px;
+}
+
+@media (max-width: 900px) {
+  .projectHero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectTitle {
+  font-family: blackbird, haskoy, sans-serif;
+  font-size: clamp(34px, 4.8vw, 64px);
+  line-height: 0.98;
+  margin: 0 0 10px;
+}
+
+.projectSubtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.projectMeta {
+  border: 1px solid var(--hairline);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 18px 18px;
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--hairline);
+}
+.metaRow:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.metaKey {
+  color: var(--muted);
+}
+.metaVal {
+  color: var(--fg);
+  overflow-wrap: anywhere;
+}
+
+.section {
+  margin-top: 32px;
+}
+
+.sectionTitle {
+  margin: 0 0 12px;
+  font-family: blackbird, haskoy, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sectionBody {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.55;
+  font-size: 16px;
+  max-width: 72ch;
+}
+
+.videoFrame {
+  margin-top: 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+.videoFrame iframe,
+.videoFrame video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.carousel {
+  margin-top: 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+}
+
+.carouselViewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.carouselViewport::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselTrack {
+  display: flex;
+}
+
+.carouselSlide {
+  scroll-snap-align: center;
+  flex: 0 0 100%;
+  position: relative;
+  background: #000;
+}
+
+.carouselSlide img {
+  width: 100%;
+  height: min(76vh, 820px);
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+.carouselControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid var(--hairline);
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.carouselBtn {
+  border: 1px solid var(--hairline);
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--fg);
+  font: inherit;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.carouselBtn:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.carouselDots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  cursor: pointer;
+}
+.dot.isActive {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.notFound {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+  color: var(--fg);
+}
+

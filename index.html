@@ -50,8 +50,16 @@
 </head>
 
 <body style="cursor: default;">
-
 	<canvas id="canvas"></canvas>
+
+	<iframe id="iframe" src="https://cables.gl/view/bLZwAP" allow="autoplay"></iframe>
+
+	<div id="introGate" style="position:fixed;inset:0;z-index:20;background:#000;display:grid;place-items:end center;padding:28px 20px;">
+		<div style="width:min(1200px,100%);display:flex;justify-content:space-between;align-items:center;gap:16px;">
+			<div style="color:rgba(255,255,255,0.68);font-family:haskoy;font-size:14px;">Interactive welcome. Press Enter to continue.</div>
+			<button id="enterBtn" type="button" style="border:1px solid #00f;background:#00f;color:#fff;font:inherit;font-family:haskoy;padding:10px 14px;border-radius:10px;cursor:pointer;">Enter</button>
+		</div>
+	</div>
 
 	<div id="bio" class="infoText" style="display: none;">
 		<h1>Konrad Simon</h1>
@@ -63,10 +71,10 @@
 		<p><a href="https://www.instagram.com/kon__moto">Instagram</a></p>
 		<p><a href="mailto:mail@konrad-simon.com">mail@konrad-simon.com</a></p>
 		<p><a href="tel:+491781084975">+49 178 1084975</a></p>
-		<p><a href="project.html?slug=example">Example project page</a></p>
 		<br>
 		
 		<h1>Visuals and Light</h1>
+		<div id="cms-visuals-and-light"></div>
 		<p>ELEO – Lighting and Stage Design – <a href="https://youtu.be/J0I9uJBDbOY">Video</a> – <a href="https://youtu.be/ClTTn0yK-OI">Behind the Scenes</a> – <a href="https://konrad-simon.picflow.com/eleo">Photos </a></p>
 		<p><a href="https://konrad-simon.picflow.com/koda-kosmos">Koda Kosmos</a> – Lighting Design</p>
 		<p><a href="https://www.youtube.com/watch?v=MTkcggfSols&ab">&#38#X1UFFFE</a> – Fulldome Visuals</p>
@@ -77,18 +85,19 @@
 		<br>
 		
 		<h1>Media Art</h1>
+		<div id="cms-media-art"></div>
 		<p><a href="https://www.youtube.com/watch?v=KNYp_Cm1bTk">manipulation</a> – Audiovisual Performance</p>
 		
 		<p><a href="https://www.youtube.com/watch?v=-kdWGV1HNPU">Plant Designer</a> – Interactive Art Installation</p>
 		<br>
 		
 		<h1>Music</h1>
+		<div id="cms-music"></div>
 		<p>Koda  Kosmos – 
 			<a href="https://koda-kosmos.com">koda-kosmos.com</a> –
 			<a href="https://www.instagram.com/koda.kosmos/">Instagram</a> – 
 			<a href="https://soundcloud.com/koda-kosmos/">Soundcloud</a>
 		</p>	
-		
 		
 		<br>
 		<br>
@@ -105,18 +114,105 @@
 		</div>
 	</div>
 
-	<iframe id="iframe" src="https://cables.gl/view/bLZwAP" allow="autoplay"></iframe>
-
 	<script>
-		document.getElementById('blueRect').addEventListener('click', function () {
-			const bio = document.getElementById('bio');
-			const blueRect = document.getElementById('blueRect');
-			const isVisible = bio.style.display !== 'none';
-			bio.style.display = isVisible ? 'none' : 'block';
-			blueRect.style.backgroundColor = isVisible ? '#00F' : '#FFF';
-		});
-	</script>
+		(function () {
+			const gate = document.getElementById('introGate');
+			const btn = document.getElementById('enterBtn');
 
+			function enterSite() {
+				if (!gate) return;
+				try { sessionStorage.setItem('hasEntered', '1'); } catch (e) { }
+				gate.style.transition = 'opacity 260ms ease';
+				gate.style.opacity = '0';
+				gate.style.pointerEvents = 'none';
+				setTimeout(() => { gate.style.display = 'none'; }, 280);
+			}
+
+			let cmsLoaded = false;
+			async function loadCmsProjects() {
+				if (cmsLoaded) return;
+				cmsLoaded = true;
+				try {
+					const res = await fetch('content/projects.json', { cache: 'no-store' });
+					if (!res.ok) return;
+					const data = await res.json();
+					const projectsRaw = Array.isArray(data && data.projects) ? data.projects : [];
+					const projects = projectsRaw.filter((p) => {
+						if (!p) return false;
+						if (String(p.slug || '').trim() === 'demo-project') return false;
+						return p.published !== false;
+					});
+					const byCat = new Map();
+					for (const p of projects) {
+						const cat = String(p && p.category || 'other');
+						if (!byCat.has(cat)) byCat.set(cat, []);
+						byCat.get(cat).push(p);
+					}
+					for (const [cat, list] of byCat.entries()) {
+						const el = document.getElementById(`cms-${cat}`);
+						if (!el) continue;
+						el.innerHTML = '';
+						for (const p of list) {
+							const title = String(p && p.title || p.slug || '').trim();
+							const slug = String(p && p.slug || '').trim();
+							if (!slug) continue;
+							const row = document.createElement('p');
+							const a = document.createElement('a');
+							a.href = `project.html?slug=${encodeURIComponent(slug)}`;
+							a.textContent = title || slug;
+							row.appendChild(a);
+							if (p && p.subtitle) {
+								row.appendChild(document.createTextNode(' – ' + String(p.subtitle)));
+							}
+							el.appendChild(row);
+						}
+					}
+				} catch (e) { }
+			}
+
+			btn && btn.addEventListener('click', enterSite);
+			// Also allow clicking anywhere on the intro to enter
+			gate && gate.addEventListener('click', (e) => {
+				// avoid double-trigger if clicking the button
+				if (e.target && e.target.id === 'enterBtn') return;
+				enterSite();
+			});
+			window.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') enterSite();
+				if (e.key === 'Escape') enterSite();
+			});
+
+			try {
+				if (sessionStorage.getItem('hasEntered') === '1') {
+					enterSite();
+				}
+			} catch (e) { }
+
+			document.getElementById('blueRect').addEventListener('click', function () {
+				// If intro gate is still visible, enter first so the UI becomes interactive.
+				if (gate && gate.style.display !== 'none' && gate.style.pointerEvents !== 'none') {
+					enterSite();
+				}
+				const bio = document.getElementById('bio');
+				const blueRect = document.getElementById('blueRect');
+				const isVisible = bio.style.display !== 'none';
+				bio.style.display = isVisible ? 'none' : 'block';
+				blueRect.style.backgroundColor = isVisible ? '#00F' : '#FFF';
+
+				// When opening, auto-scroll to the top of the blue panel.
+				if (!isVisible) {
+					loadCmsProjects();
+					requestAnimationFrame(() => {
+						try {
+							bio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						} catch (e) {
+							window.scrollTo(0, 0);
+						}
+					});
+				}
+			});
+		})();
+	</script>
 </body>
 
 </html>

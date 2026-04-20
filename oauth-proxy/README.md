@@ -20,7 +20,7 @@ Copy:
   - `OAUTH_CLIENT_SECRET`: GitHub Client Secret
   - `OAUTH_REDIRECT_URI`: `https://<your-worker-subdomain>.workers.dev/callback`
   - `OAUTH_ALLOWED_ORIGINS`: comma-separated allowed origins, e.g.
-    - `https://konrad-simon.com,http://localhost:5173,http://localhost:5174`
+    - `https://konrad-simon.com,https://www.konrad-simon.com,http://localhost:5173,http://localhost:5174`
     - must match exactly (protocol + domain + optional port, no trailing slash)
 
 ### 3) Configure Decap

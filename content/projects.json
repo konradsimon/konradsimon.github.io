@@ -1,18 +1,4 @@
 {
-  "projects": [
-    {
-      "slug": "test",
-      "category": "visuals-and-light",
-      "title": "Test",
-      "subtitle": "hallo",
-      "published": true
-    },
-    {
-      "published": true,
-      "slug": "hallo",
-      "category": "music",
-      "title": "hallo",
-      "subtitle": "kbj2ebkj"
-    }
-  ]
+  "projects": []
 }
+

@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#000" />
 
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="project.css" />
     <link rel="preload" href="fonts/Haskoy-Regular.ttf" as="font" crossorigin="anonymous" />
     <link rel="preload" href="fonts/Project-Blackbird.otf" as="font" crossorigin="anonymous" />
 
@@ -23,31 +24,20 @@
     <link rel="apple-touch-icon" sizes="152x152" href="icons/touch-ipad-ret.png" />
   </head>
 
-  <body style="cursor: default;">
-    <canvas id="canvas"></canvas>
-
-    <div id="panel" class="infoText" style="display: block;">
-      <h1 id="projectTitle">Loading…</h1>
-      <div id="projectContent"></div>
-    </div>
-
-    <div id="rightMenu">
-      <div id="blueRectParent" class="menuItem">
-        <div id="blueRect" class="rect"></div>
+  <body class="projectBody" style="cursor: default;">
+    <div class="projectPage">
+      <div class="projectChrome">
+        <nav class="projectNav" aria-label="Project navigation">
+          <a href="index.html">Home</a>
+          <div class="projectNavTitle" id="navTitle">Project</div>
+          <a href="admin.html">Admin</a>
+        </nav>
       </div>
+
+      <main class="projectWrap" id="app" aria-live="polite">
+        <!-- filled by project.js -->
+      </main>
     </div>
-
-    <iframe id="iframe" src="https://cables.gl/view/bLZwAP" allow="autoplay"></iframe>
-
-    <script>
-      document.getElementById("blueRect").addEventListener("click", function () {
-        const panel = document.getElementById("panel");
-        const blueRect = document.getElementById("blueRect");
-        const isVisible = panel.style.display !== "none";
-        panel.style.display = isVisible ? "none" : "block";
-        blueRect.style.backgroundColor = isVisible ? "#00F" : "#FFF";
-      });
-    </script>
 
     <script src="project.js"></script>
   </body>
