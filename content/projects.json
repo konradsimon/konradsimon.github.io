@@ -1,23 +1,21 @@
 {
   "projects": [
     {
-      "participants": [
-        "Florian Seefing – Lighting Design/Operating"
-      ],
-      "photos": [
-        "/assets/uploads/1.png",
-        "/assets/uploads/11.png",
-        "/assets/uploads/15.png",
-        "/assets/uploads/7.png"
-      ],
-      "slug": "kodakosmosvideo",
       "published": true,
-      "videoUrl": "",
-      "role": "Floor Set Lighting Design",
-      "subtitle": "Live Music Video Production",
+      "slug": "kodakosmosvideo",
+      "category": "visuals-and-light",
       "title": "Koda Kosmos live on tape",
-      "description": "Live on tape music video prodection for Koda Kosmos. ",
-      "category": "visuals-and-light"
+      "subtitle": "Live Music Video Production",
+      "role": "Floor Set Lighting Design",
+      "credits": "Florian Seefing – Lighting Design/Operating",
+      "description": "Live on tape music video production for Koda Kosmos. ",
+      "photos": [
+        { "image": "/assets/uploads/1.png", "credit": "" },
+        { "image": "/assets/uploads/11.png", "credit": "" },
+        { "image": "/assets/uploads/15.png", "credit": "" },
+        { "image": "/assets/uploads/7.png", "credit": "" }
+      ],
+      "videoUrl": ""
     }
   ]
 }
