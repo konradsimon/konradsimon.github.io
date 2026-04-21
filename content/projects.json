@@ -61,6 +61,33 @@
       "credits": "Nora Bögel – Music, Creative Direction",
       "description": "With a unique fusion of electronic club music and gentle vocals, ELEO creates a sonic world where every emotion finds its place. With self-developed pixel tubes, beam bars, and mirrors, the music becomes a live visual experience. Innovative lighting work illuminates expansive synthesizer sounds in detail-oriented productions, turning the performance into a multisensory experience.",
       "category": "visuals-and-light"
+    },
+    {
+      "published": true,
+      "slug": "kodakosmos",
+      "category": "visuals-and-light",
+      "title": "Koda Kosmos",
+      "subtitle": "Release Show",
+      "role": "Lighting Design, Creative Direction, Musician",
+      "credits": "Daniel Olbricht – Musician",
+      "photos": [
+        {
+          "image": "/assets/uploads/koda-release-konzert-23.jpg",
+          "credit": "Erik Hartmann"
+        },
+        {
+          "image": "/assets/uploads/koda-release-konzert-140.jpg",
+          "credit": "Erik Hartmann"
+        },
+        {
+          "image": "/assets/uploads/koda-release-konzert-55.jpg",
+          "credit": "Erik Hartmann"
+        },
+        {
+          "credit": "Erik Hartmann",
+          "image": "/assets/uploads/koda-release-konzert-10.jpg"
+        }
+      ]
     }
   ]
 }
