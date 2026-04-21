@@ -3,6 +3,15 @@
 	src: url("fonts/Haskoy-Regular.ttf");
 	}
 
+/* keep consistent rounded corners across pages */
+:root {
+	--radius: 10px;
+	--accent: #00f;
+	--muted: rgba(255, 255, 255, 0.68);
+	--hairline: rgba(255, 255, 255, 0.16);
+	--panel: rgba(0, 0, 0, 0.72);
+}
+
 
 @font-face {
 	font-family: gt;
@@ -69,12 +78,12 @@ option {
 }
 
 .rect {
-	height: 4vmax;
-	width: 20vmax;
+	height: 56px;
+	width: 300px;
 	margin: 0px;
 	padding: 0px;
 	background-color: #10f;
-	border-radius: 0%;
+	border-radius: var(--radius) 0 0 var(--radius);
 	display: inline-block;
 	cursor: pointer;
 	pointer-events: auto; 
@@ -91,8 +100,8 @@ option {
 	}
 	/* bigger click target for the rectangle */
 	.rect {
-		height: 6vmax;
-		width: 30vmax;
+		height: 7vmax;
+		width: 24vmax;
 	}
 }
 
@@ -140,6 +149,11 @@ img {
     margin-block-start: 0px;
     margin-block-end: 2vmin;
     line-height: normal;
+}
+
+.infoText .copyright {
+	font-size: 1.6vh;
+	opacity: 0.9;
 }
 
 
