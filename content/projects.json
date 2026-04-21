@@ -30,11 +30,6 @@
       "category": "visuals-and-light"
     },
     {
-      "published": true,
-      "slug": "eleo",
-      "category": "visuals-and-light",
-      "title": "ELEO",
-      "subtitle": "Audiovisual Lightshow",
       "photos": [
         {
           "image": "/assets/uploads/img_4326.png",
@@ -43,10 +38,29 @@
         {
           "image": "/assets/uploads/eleo_250612_palastrauschen-12.jpg",
           "credit": "Laura Rukavina"
+        },
+        {
+          "image": "/assets/uploads/img_4331.png",
+          "credit": "Luca Spanier"
+        },
+        {
+          "image": "/assets/uploads/eleo_250612_palastrauschen-03.jpg",
+          "credit": "Laura Rukavina"
+        },
+        {
+          "image": "/assets/uploads/ao_25-320-148.jpg",
+          "credit": "Anne Orthen"
         }
       ],
+      "slug": "eleo",
+      "published": true,
+      "videoUrl": "https://www.youtube.com/watch?v=J0I9uJBDbOY",
       "role": "Light Designer, Creative Direction, TouchDesigner Developer",
-      "credits": "Nora Bögel – Music, Creative Direction"
+      "subtitle": "Audiovisual Lightshow",
+      "title": "ELEO",
+      "credits": "Nora Bögel – Music, Creative Direction",
+      "description": "With a unique fusion of electronic club music and gentle vocals, ELEO creates a sonic world where every emotion finds its place. With self-developed pixel tubes, beam bars, and mirrors, the music becomes a live visual experience. Innovative lighting work illuminates expansive synthesizer sounds in detail-oriented productions, turning the performance into a multisensory experience.",
+      "category": "visuals-and-light"
     }
   ]
 }
