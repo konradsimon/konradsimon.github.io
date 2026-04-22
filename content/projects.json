@@ -22,11 +22,11 @@
       "slug": "kodakosmosvideo",
       "published": true,
       "videoUrl": "",
-      "role": "Floor Set Lighting Design",
+      "role": "Lighting Design, Creative Direction, Musician",
       "subtitle": "Live Music Video Production",
       "title": "Koda Kosmos live on tape",
-      "credits": "Florian Seefing – Lighting Design/Operating",
-      "description": "Live on tape music video production for Koda Kosmos. ",
+      "credits": "Florian Seefing – Lighting Design/Operating, Daniel Olbricht – Musician",
+      "description": "A live multi-camera production at Landschaftspark Duisburg-Nord, where I designed and operated a real-time pixel mapping system for 60+ wireless LED tubes driven by the duo's live synthesizer performance. Visuals were generated and controlled in real time using TAPE, a custom tool I built to bridge Ableton Live and TouchDesigner. Video to follow.",
       "category": "visuals-and-light"
     },
     {
