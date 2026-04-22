@@ -88,6 +88,27 @@
           "image": "/assets/uploads/koda-release-konzert-10.jpg"
         }
       ]
+    },
+    {
+      "photos": [
+        {
+          "image": "/assets/uploads/231216-203.jpg",
+          "credit": "KID VELOUR"
+        },
+        {
+          "image": "/assets/uploads/231216-164.jpg",
+          "credit": "KID VELOUR"
+        }
+      ],
+      "slug": "fulldome",
+      "published": true,
+      "videoUrl": "https://www.youtube.com/watch?v=MTkcggfSols&ab",
+      "role": "Interactive Video Artist",
+      "subtitle": "Fulldome Performance",
+      "title": "&#X1UFFFE",
+      "credits": "Emil Theodor Felhofer – Direction, dance, sound. Sasha Krutikova – Dance, sound, choreography ",
+      "description": "A symbiosis of dance, sound, sensory experience, and visuals.\nSound and visuals respond in real time to the dancers, driven by body sensors.",
+      "category": "visuals-and-light"
     }
   ]
 }
