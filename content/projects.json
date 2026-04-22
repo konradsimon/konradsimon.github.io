@@ -154,6 +154,32 @@
       "credits": "Project by: Konrad Simon, Mathias Wensauer, Marika Ajima, Tobia Diekmann",
       "description": "In this interactive installation, visitors can explore and create personalized organic geo-metries based on three different L-system algorithms. L-systems (Lindenmayer systems)\nare a mathematical model used to describe the growth of plants and other natural forms through recursive rules and geometric patterns.\n\nUsing rotary controls and sensors, participants manipulate parameters to generate unique plant-inspired forms, which can be printed as tangible artworks. The installation encourages playful exploration of algorithmic design and the intersection of nature and technology.\n\nMade with TouchDesginer and Arduino",
       "category": "media-art"
+    },
+    {
+      "published": true,
+      "slug": "pixeltubes",
+      "category": "other",
+      "title": "DIY Pixel Tubes",
+      "subtitle": "Custom Build",
+      "role": "Creative Technologist",
+      "description": "A hardware project in which I designed and built eight 2-metre, high-brightness, high-resolution pixel tubes including their controllers",
+      "photos": [
+        {
+          "image": "/assets/uploads/img_2405.jpeg"
+        },
+        {
+          "image": "/assets/uploads/img_2514.jpeg"
+        },
+        {
+          "image": "/assets/uploads/img_2358.jpeg"
+        },
+        {
+          "image": "/assets/uploads/img_2720.jpeg"
+        },
+        {
+          "image": "/assets/uploads/img_2510.jpeg"
+        }
+      ]
     }
   ]
 }
