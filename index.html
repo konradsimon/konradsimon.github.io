@@ -79,7 +79,7 @@
 		
 		<h1>Media Art</h1>
 		<div id="cms-media-art"></div>
-		<!-- <p><a href="https://www.youtube.com/watch?v=KNYp_Cm1bTk">manipulation</a> – Audiovisual Performance</p>
+		<!--<p><a href="https://www.youtube.com/watch?v=KNYp_Cm1bTk">manipulation</a> – Audiovisual Performance</p>
 		
 		<p><a href="https://www.youtube.com/watch?v=-kdWGV1HNPU">Plant Designer</a> – Interactive Art Installation</p> -->
 		<br>
@@ -94,10 +94,10 @@
 		
 		<br>
 		<br>
-		
-		<p><a href="impressum.html">Impressum</a></p>
+
+		<p><a href="imprint.html">Imprint</a></p>
 		<br>
-		<p>© Konrad Simon 2026</p>
+		<p class="copyright">© Konrad Simon 2026</p>
 	</div>
 
 	<div id="rightMenu">
@@ -199,9 +199,14 @@
 			document.getElementById('blueRect').addEventListener('click', function () {
 				const isVisible = bio.style.display !== 'none';
 				if (isVisible) {
-					bio.style.display = 'none';
-					blueRect.style.backgroundColor = '#00F';
-					if (iframe) iframe.style.display = '';
+					// Smoothly return to the intro animation at the top.
+					// Don't hide the panel immediately, otherwise the page height can shrink and the browser
+					// "snaps" to the top, canceling the smooth scroll.
+					try {
+						window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+					} catch (e) {
+						window.scrollTo(0, 0);
+					}
 				} else {
 					openPanel();
 				}
