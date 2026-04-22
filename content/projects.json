@@ -180,6 +180,26 @@
           "image": "/assets/uploads/img_2510.jpeg"
         }
       ]
+    },
+    {
+      "photos": [
+        {
+          "image": "/assets/uploads/img_5706.jpeg",
+          "credit": "Gerrit Kress"
+        },
+        {
+          "image": "/assets/uploads/img_5689.jpeg",
+          "credit": "Gerrit Kress"
+        }
+      ],
+      "slug": "mwc2026",
+      "published": false,
+      "role": "TouchDesigner Software Developer",
+      "subtitle": "Software Development",
+      "title": "Deutsche Telekom – MWC Exhibits",
+      "credits": "Grosse8 – Agency",
+      "description": "Development of TouchDesigner software for two interactive installations at Deutsche Telekom's booth at Mobile World Congress 2026.",
+      "category": "other"
     }
   ]
 }
