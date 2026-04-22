@@ -109,6 +109,27 @@
       "credits": "Emil Theodor Felhofer – Direction, dance, sound. Sasha Krutikova – Dance, sound, choreography ",
       "description": "A symbiosis of dance, sound, sensory experience, and visuals.\nSound and visuals respond in real time to the dancers, driven by body sensors.",
       "category": "visuals-and-light"
+    },
+    {
+      "photos": [
+        {
+          "image": "/assets/uploads/untitled2.png"
+        },
+        {
+          "image": "/assets/uploads/63-b35.png"
+        },
+        {
+          "image": "/assets/uploads/63-b35.png"
+        }
+      ],
+      "slug": "manipulation",
+      "published": true,
+      "videoUrl": "https://www.youtube.com/watch?v=KNYp_Cm1bTk",
+      "role": "Artists",
+      "subtitle": "Audiovisual Performance",
+      "title": "manipulation",
+      "description": "\"manipulation\" takes a DNA sequence as its starting point. Through hand movements, the performer intervenes directly in the audiovisual system — shaping sound and image in real time. The work traces the tension between biological structure and digital logic, asking what it means to influence something you yourself have set in motion.\nMade with Ableton, TouchDesigner and Leapmotion Sensor ",
+      "category": "media-art"
     }
   ]
 }
