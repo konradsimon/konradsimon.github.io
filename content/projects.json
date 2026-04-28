@@ -157,27 +157,18 @@
     },
     {
       "published": true,
-      "slug": "pixeltubes",
+      "slug": "tape",
       "category": "other",
-      "title": "DIY Pixel Tubes",
-      "subtitle": "Custom Build",
-      "role": "Creative Technologist",
-      "description": "A hardware project in which I designed and built eight 2-metre, high-brightness, high-resolution pixel tubes including their controllers",
+      "title": "TAPE – TouchDesigner Ableton Performance Engine",
+      "subtitle": "Bachelor Thesis Software",
+      "role": "Developer",
+      "description": "TAPE is a show control framework that bridges Ableton Live and TouchDesigner for audiovisual live performance. Built on top of TDAbleton, it synchronizes Ableton's timeline structure with a hierarchical visual network, providing normalized data buses for audio level, MIDI, beat, and parameter automation. Visual modules bind to these buses in real time, allowing generative content, live camera input, video playback, and pixel mapping pipelines to respond directly to the music. TAPE does not generate visual content itself, but provides the structural and reactive infrastructure on which a complete audiovisual show can be built.",
       "photos": [
         {
-          "image": "/assets/uploads/img_2405.jpeg"
+          "image": "/assets/uploads/performmode_2.png"
         },
         {
-          "image": "/assets/uploads/img_2514.jpeg"
-        },
-        {
-          "image": "/assets/uploads/img_2358.jpeg"
-        },
-        {
-          "image": "/assets/uploads/img_2720.jpeg"
-        },
-        {
-          "image": "/assets/uploads/img_2510.jpeg"
+          "image": "/assets/uploads/network_tape.png"
         }
       ]
     },
@@ -203,18 +194,27 @@
     },
     {
       "published": true,
-      "slug": "tape",
+      "slug": "pixeltubes",
       "category": "other",
-      "title": "TAPE – TouchDesigner Ableton Performance Engine",
-      "subtitle": "Bachelor Thesis Software",
-      "role": "Developer",
-      "description": "TAPE is a show control framework that bridges Ableton Live and TouchDesigner for audiovisual live performance. Built on top of TDAbleton, it synchronizes Ableton's timeline structure with a hierarchical visual network, providing normalized data buses for audio level, MIDI, beat, and parameter automation. Visual modules bind to these buses in real time, allowing generative content, live camera input, video playback, and pixel mapping pipelines to respond directly to the music. TAPE does not generate visual content itself, but provides the structural and reactive infrastructure on which a complete audiovisual show can be built.",
+      "title": "DIY Pixel Tubes",
+      "subtitle": "Custom Build",
+      "role": "Creative Technologist",
+      "description": "A hardware project in which I designed and built eight 2-metre, high-brightness, high-resolution pixel tubes including their controllers",
       "photos": [
         {
-          "image": "/assets/uploads/performmode_2.png"
+          "image": "/assets/uploads/img_2405.jpeg"
         },
         {
-          "image": "/assets/uploads/network_tape.png"
+          "image": "/assets/uploads/img_2514.jpeg"
+        },
+        {
+          "image": "/assets/uploads/img_2358.jpeg"
+        },
+        {
+          "image": "/assets/uploads/img_2720.jpeg"
+        },
+        {
+          "image": "/assets/uploads/img_2510.jpeg"
         }
       ]
     }
