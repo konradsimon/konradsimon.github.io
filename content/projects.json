@@ -92,6 +92,27 @@
     {
       "photos": [
         {
+          "image": "/assets/uploads/untitled2.png"
+        },
+        {
+          "image": "/assets/uploads/63-b35.png"
+        },
+        {
+          "image": "/assets/uploads/untitled3.png"
+        }
+      ],
+      "slug": "manipulation",
+      "published": true,
+      "videoUrl": "https://www.youtube.com/watch?v=KNYp_Cm1bTk",
+      "role": "Artist",
+      "subtitle": "Audiovisual Performance",
+      "title": "manipulation",
+      "description": "\"manipulation\" takes a DNA sequence as its starting point. Through hand movements, the performer intervenes directly in the audiovisual system — shaping sound and image in real time. The work traces the tension between biological structure and digital logic, asking what it means to influence something you yourself have set in motion.\nMade with Ableton, TouchDesigner and Leapmotion Sensor ",
+      "category": "visuals-and-light"
+    },
+    {
+      "photos": [
+        {
           "image": "/assets/uploads/231216-203.jpg",
           "credit": "KID VELOUR"
         },
@@ -109,51 +130,6 @@
       "credits": "Emil Theodor Felhofer – Direction, dance, sound. Sasha Krutikova – Dance, sound, choreography ",
       "description": "A symbiosis of dance, sound, sensory experience, and visuals.\nSound and visuals respond in real time to the dancers, driven by body sensors.",
       "category": "visuals-and-light"
-    },
-    {
-      "photos": [
-        {
-          "image": "/assets/uploads/untitled2.png"
-        },
-        {
-          "image": "/assets/uploads/63-b35.png"
-        },
-        {
-          "image": "/assets/uploads/untitled3.png"
-        }
-      ],
-      "slug": "manipulation",
-      "published": true,
-      "videoUrl": "https://www.youtube.com/watch?v=KNYp_Cm1bTk",
-      "role": "Artist",
-      "subtitle": "Audiovisual Performance",
-      "title": "manipulation",
-      "description": "\"manipulation\" takes a DNA sequence as its starting point. Through hand movements, the performer intervenes directly in the audiovisual system — shaping sound and image in real time. The work traces the tension between biological structure and digital logic, asking what it means to influence something you yourself have set in motion.\nMade with Ableton, TouchDesigner and Leapmotion Sensor ",
-      "category": "media-art"
-    },
-    {
-      "photos": [
-        {
-          "image": "/assets/uploads/plants_1.png"
-        },
-        {
-          "image": "/assets/uploads/plants_2.png"
-        },
-        {
-          "image": "/assets/uploads/plants_3.png"
-        },
-        {
-          "image": "/assets/uploads/plants_4.png"
-        }
-      ],
-      "slug": "plant-designer",
-      "published": true,
-      "videoUrl": "https://www.youtube.com/watch?v=-kdWGV1HNPU",
-      "subtitle": "Interactive Art Installation",
-      "title": "(Prototype) Plant Designer",
-      "credits": "Project by: Konrad Simon, Mathias Wensauer, Marika Ajima, Tobia Diekmann",
-      "description": "In this interactive installation, visitors can explore and create personalized organic geo-metries based on three different L-system algorithms. L-systems (Lindenmayer systems)\nare a mathematical model used to describe the growth of plants and other natural forms through recursive rules and geometric patterns.\n\nUsing rotary controls and sensors, participants manipulate parameters to generate unique plant-inspired forms, which can be printed as tangible artworks. The installation encourages playful exploration of algorithmic design and the intersection of nature and technology.\n\nMade with TouchDesigner and Arduino",
-      "category": "media-art"
     },
     {
       "published": true,
@@ -217,6 +193,30 @@
           "image": "/assets/uploads/img_2510.jpeg"
         }
       ]
+    },
+    {
+      "photos": [
+        {
+          "image": "/assets/uploads/plants_1.png"
+        },
+        {
+          "image": "/assets/uploads/plants_2.png"
+        },
+        {
+          "image": "/assets/uploads/plants_3.png"
+        },
+        {
+          "image": "/assets/uploads/plants_4.png"
+        }
+      ],
+      "slug": "plant-designer",
+      "published": true,
+      "videoUrl": "https://www.youtube.com/watch?v=-kdWGV1HNPU",
+      "subtitle": "Interactive Art Installation",
+      "title": "(Prototype) Plant Designer",
+      "credits": "Project by: Konrad Simon, Mathias Wensauer, Marika Ajima, Tobia Diekmann",
+      "description": "In this interactive installation, visitors can explore and create personalized organic geo-metries based on three different L-system algorithms. L-systems (Lindenmayer systems)\nare a mathematical model used to describe the growth of plants and other natural forms through recursive rules and geometric patterns.\n\nUsing rotary controls and sensors, participants manipulate parameters to generate unique plant-inspired forms, which can be printed as tangible artworks. The installation encourages playful exploration of algorithmic design and the intersection of nature and technology.\n\nMade with TouchDesigner and Arduino",
+      "category": "other"
     }
   ]
 }
