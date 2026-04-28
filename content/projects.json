@@ -200,6 +200,23 @@
       "credits": "Grosse8 – Agency",
       "description": "Development of TouchDesigner software for two interactive installations at Deutsche Telekom's booth at Mobile World Congress 2026.",
       "category": "other"
+    },
+    {
+      "published": true,
+      "slug": "tape",
+      "category": "other",
+      "title": "TAPE – TouchDesigner Ableton Performance Engine",
+      "subtitle": "Bachelor Thesis Software",
+      "role": "Developer",
+      "description": "TAPE is a show control framework that bridges Ableton Live and TouchDesigner for audiovisual live performance. Built on top of TDAbleton, it synchronizes Ableton's timeline structure with a hierarchical visual network, providing normalized data buses for audio level, MIDI, beat, and parameter automation. Visual modules bind to these buses in real time, allowing generative content, live camera input, video playback, and pixel mapping pipelines to respond directly to the music. TAPE does not generate visual content itself, but provides the structural and reactive infrastructure on which a complete audiovisual show can be built.",
+      "photos": [
+        {
+          "image": "/assets/uploads/performmode_2.png"
+        },
+        {
+          "image": "/assets/uploads/network_tape.png"
+        }
+      ]
     }
   ]
 }
