@@ -216,6 +216,8 @@ body.projectBody {
   display: block;
   background: #000;
   /* override global img styles from styles.css */
+  max-width: none !important;
+  max-height: none !important;
   float: none;
 }
 
