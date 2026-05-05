@@ -32,9 +32,9 @@ collections:
                 required: true
                 options:
                   - { label: "Visuals and Light", value: "visuals-and-light" }
-                  - { label: "Media Art", value: "media-art" }
+                  - { label: "Interactive and Installations", value: "interactive-and-installations" }
+                  - { label: "Tools and Experiments", value: "tools-and-experiments" }
                   - { label: "Music", value: "music" }
-                  - { label: "Other", value: "other" }
               - { name: "title", label: "Title", widget: "string", required: true }
               - { name: "subtitle", label: "Subtitle", widget: "string", required: false }
               - { name: "role", label: "My function / role", widget: "string", required: false }
