@@ -107,7 +107,8 @@ body.projectBody {
 /* On desktop: let the big title breathe and align meta closer to the About section. */
 @media (min-width: 901px) {
   .projectMeta {
-    align-self: end;
+    /* push it down a bit so it doesn't stick to the top next to the big title */
+    margin-top: clamp(18px, 4.2vw, 72px);
   }
 }
 
