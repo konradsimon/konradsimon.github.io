@@ -153,6 +153,42 @@ function normalizePhotos(raw) {
     .filter(Boolean);
 }
 
+function applyCarouselAspectFromFirstImage(carouselRoot, firstSrc) {
+  const src = String(firstSrc || "").trim();
+  if (!carouselRoot || !src) return;
+
+  function setFromNatural(w, h) {
+    const nw = Number(w);
+    const nh = Number(h);
+    if (!Number.isFinite(nw) || !Number.isFinite(nh) || nw <= 0 || nh <= 0) return;
+    carouselRoot.style.setProperty("--carousel-aspect", `${nw} / ${nh}`);
+  }
+
+  function measure(img) {
+    if (img && img.naturalWidth && img.naturalHeight) {
+      setFromNatural(img.naturalWidth, img.naturalHeight);
+      return true;
+    }
+    return false;
+  }
+
+  try {
+    const firstSlideImg = carouselRoot.querySelector(".carouselSlide img");
+    if (measure(firstSlideImg)) return;
+
+    const probe = new Image();
+    probe.decoding = "async";
+    probe.onload = () => measure(probe);
+    probe.onerror = () => {
+      // Safe fallback if the first asset fails to load
+      carouselRoot.style.removeProperty("--carousel-aspect");
+    };
+    probe.src = src;
+  } catch {
+    // ignore
+  }
+}
+
 function buildCarousel(photos) {
   const viewport = el("div", { class: "carouselViewport" });
   const track = el("div", { class: "carouselTrack" });
@@ -215,6 +251,11 @@ function buildCarousel(photos) {
 
   const controls = el("div", { class: "carouselControls" }, [dotsWrap]);
   const root = el("div", { class: "carousel" }, [viewport, controls]);
+
+  requestAnimationFrame(() => {
+    if (photos[0]?.src) applyCarouselAspectFromFirstImage(root, photos[0].src);
+  });
+
   return root;
 }
 
