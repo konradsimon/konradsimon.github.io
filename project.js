@@ -187,8 +187,7 @@ function applyCarouselViewportSizingFromFirstImage(carouselRoot, firstSrc) {
     if (h > maxH) h = maxH;
 
     const hPx = `${Math.max(1, Math.floor(h))}px`;
-    viewport.style.height = hPx;
-    track.style.height = hPx;
+    carouselRoot.style.setProperty("--carousel-h", hPx);
   }
 
   // Re-apply on responsive width changes (and when the first image finishes loading).

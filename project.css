@@ -175,6 +175,7 @@ body.projectBody {
   scrollbar-width: none;
   width: 100%;
   /* Height is set in JS from the first image's intrinsic ratio (see project.js). */
+  height: var(--carousel-h, auto);
 }
 .carouselViewport::-webkit-scrollbar {
   display: none;
@@ -182,6 +183,8 @@ body.projectBody {
 
 .carouselTrack {
   display: flex;
+  height: var(--carousel-h, auto);
+  align-items: stretch;
 }
 
 .carouselSlide {
@@ -190,7 +193,7 @@ body.projectBody {
   flex: 0 0 100%;
   position: relative;
   background: #000;
-  height: 100%;
+  height: var(--carousel-h, auto);
   display: flex;
   align-items: center;
   justify-content: center;
