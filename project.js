@@ -332,16 +332,21 @@ function renderProject(project) {
     subtitle ? el("p", { class: "projectSubtitle", text: subtitle }) : el("p", { class: "projectSubtitle", text: "" }),
   ]);
 
-  const hero = el("section", { class: "projectHero" }, [heroLeft, buildMeta(project)]);
+  const meta = buildMeta(project);
+  const hero = el("section", { class: "projectHero" }, [heroLeft]);
   app.append(hero);
 
   if (asText(project.description)) {
     app.append(
-      el("section", { class: "section" }, [
+      el("section", { class: "section aboutGrid" }, [
         el("h2", { class: "sectionTitle", text: "About" }),
-        buildDescription(project.description),
+        el("div", { class: "aboutGridContent" }, [buildDescription(project.description)]),
+        meta,
       ]),
     );
+  } else {
+    // If there's no "About" section, keep the meta visible near the top.
+    hero.append(meta);
   }
 
   if (asText(project.videoUrl)) {
