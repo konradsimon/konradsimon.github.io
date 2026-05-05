@@ -174,7 +174,7 @@
       "title": "Deutsche Telekom – MWC 2026",
       "credits": "Deutsche Telekom – Client, GROSSE8 – Agency",
       "description": "For Deutsche Telekom's presence at Mobile World Congress 2026 in Barcelona, I developed the TouchDesigner software for two interactive exhibits on behalf of the experience design studio GROSSE8: The Magenta AI Call Assistant and the Quantum Teleportation installation. Both exhibits translated complex technological innovations into tangible, hands-on experiences for a global trade show audience. The setups were designed for reliable performance in a demanding live event environment over the course of the congress.",
-      "category": "tools-and-experiments"
+      "category": "interactive-and-installations"
     },
     {
       "published": true,
@@ -224,7 +224,7 @@
       "title": "(Prototype) Plant Designer",
       "credits": "Project by: Konrad Simon, Mathias Wensauer, Marika Ajima, Tobia Diekmann",
       "description": "In this interactive installation, visitors can explore and create personalized organic geo-metries based on three different L-system algorithms. L-systems (Lindenmayer systems)\nare a mathematical model used to describe the growth of plants and other natural forms through recursive rules and geometric patterns.\n\nUsing rotary controls and sensors, participants manipulate parameters to generate unique plant-inspired forms, which can be printed as tangible artworks. The installation encourages playful exploration of algorithmic design and the intersection of nature and technology.\n\nMade with TouchDesigner and Arduino",
-      "category": "tools-and-experiments"
+      "category": "interactive-and-installations"
     },
     {
       "published": true,
