@@ -25,7 +25,7 @@
       "role": "Lighting and Stage Design, Musician",
       "subtitle": "Audioreactive Light Installation",
       "title": "Koda Kosmos live on tape",
-      "credits": "Florian Seefing – Lighting Design/Operating, Daniel Olbricht – Musician",
+      "credits": "Florian Seefing – Lighting Design/Operating\nDaniel Olbricht – Musician",
       "description": "A live multi-camera production at Landschaftspark Duisburg-Nord, realized in cooperation with Hochschule Düsseldorf. I designed the stage setup and developed the visual system: real-time visuals were generated and mapped onto 60+ wireless LED tubes, driven directly by the duo's live synthesizer performance. Show control, audio reactivity, and pixel mapping were handled by TAPE, a custom framework I built.",
       "category": "visuals-and-light"
     },
@@ -127,7 +127,7 @@
       "role": "Interactive Video Artist",
       "subtitle": "Fulldome Performance",
       "title": "&#X1UFFFE",
-      "credits": "Emil Theodor Felhofer – Direction, dance, sound. Sasha Krutikova – Dance, sound, choreography ",
+      "credits": "Emil Theodor Felhofer – Direction, dance, sound\nSasha Krutikova – Dance, sound, choreography ",
       "description": "A symbiosis of dance, sound, sensory experience, and visuals.\nSound and visuals respond in real time to the dancers, driven by body sensors.",
       "category": "visuals-and-light"
     },
@@ -172,7 +172,7 @@
       "role": "TouchDesigner Software Developer",
       "subtitle": "Interactive Software",
       "title": "Deutsche Telekom – MWC 2026",
-      "credits": "Deutsche Telekom – Client, GROSSE8 – Agency",
+      "credits": "Deutsche Telekom – Client\nGROSSE8 – Agency",
       "description": "For Deutsche Telekom's presence at Mobile World Congress 2026 in Barcelona, I developed the TouchDesigner software for two interactive exhibits on behalf of the experience design studio GROSSE8: The Magenta AI Call Assistant and the Quantum Teleportation installation. Both exhibits translated complex technological innovations into tangible, hands-on experiences for a global trade show audience. The setups were designed for reliable performance in a demanding live event environment over the course of the congress.",
       "category": "interactive-and-installations"
     },
