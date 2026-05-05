@@ -7,6 +7,9 @@
   </head>
   <body>
     <script>
+      // We manually initialize Decap so it uses `admin/config.js` (avoids stale/cached `config.yml`).
+      window.CMS_MANUAL_INIT = true;
+
       // Debug helper: shows whether the OAuth popup posts a message back.
       // Remove later if you want, but it's harmless.
       window.addEventListener("message", (e) => {
@@ -23,7 +26,12 @@
         console.log("[decap-debug] unhandledrejection", e?.reason || e),
       );
     </script>
+    <script src="config.js"></script>
     <script src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"></script>
+    <script>
+      // Init with JS config (keeps category options in sync)
+      window.CMS?.init({ config: window.DECAP_CMS_CONFIG });
+    </script>
   </body>
 </html>
 
