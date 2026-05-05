@@ -231,7 +231,7 @@
       "slug": "kontroller",
       "category": "tools-and-experiments",
       "title": "Joystick Controller",
-      "subtitle": "DIY build",
+      "subtitle": "Custom Build",
       "role": "Designer, Developer",
       "description": "A custom-built 4-axis MIDI joystick controller for expressive live performance. Designed for parameters like pitch bend and expression, it uses an ESP32 microcontroller and a 3D-printed enclosure.",
       "photos": [
