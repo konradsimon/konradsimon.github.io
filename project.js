@@ -153,35 +153,93 @@ function normalizePhotos(raw) {
     .filter(Boolean);
 }
 
-function applyCarouselAspectFromFirstImage(carouselRoot, firstSrc) {
+const carouselLayoutRegistry = new WeakMap();
+
+function carouselMaxViewportHeightPx() {
+  return Math.min(window.innerHeight * 0.78, 900);
+}
+
+function applyCarouselViewportSizingFromFirstImage(carouselRoot, firstSrc) {
   const src = String(firstSrc || "").trim();
   if (!carouselRoot || !src) return;
 
-  function setFromNatural(w, h) {
+  const viewport = carouselRoot.querySelector(".carouselViewport");
+  const track = carouselRoot.querySelector(".carouselTrack");
+  if (!viewport || !track) return;
+
+  let ratioWoverH = null; // width / height of the *first* image
+
+  function setRatioFromNatural(w, h) {
     const nw = Number(w);
     const nh = Number(h);
-    if (!Number.isFinite(nw) || !Number.isFinite(nh) || nw <= 0 || nh <= 0) return;
-    carouselRoot.style.setProperty("--carousel-aspect", `${nw} / ${nh}`);
+    if (!Number.isFinite(nw) || !Number.isFinite(nh) || nw <= 0 || nh <= 0) return false;
+    ratioWoverH = nw / nh;
+    return true;
   }
 
-  function measure(img) {
-    if (img && img.naturalWidth && img.naturalHeight) {
-      setFromNatural(img.naturalWidth, img.naturalHeight);
-      return true;
+  function applyHeights() {
+    if (!ratioWoverH) return;
+    const w = Math.max(1, Math.floor(viewport.clientWidth || 0));
+    if (!w) return;
+
+    const maxH = carouselMaxViewportHeightPx();
+    let h = w / ratioWoverH;
+    if (h > maxH) h = maxH;
+
+    const hPx = `${Math.max(1, Math.floor(h))}px`;
+    viewport.style.height = hPx;
+    track.style.height = hPx;
+  }
+
+  // Re-apply on responsive width changes (and when the first image finishes loading).
+  try {
+    const prev = carouselLayoutRegistry.get(carouselRoot);
+    if (prev?.ro) prev.ro.disconnect();
+    if (prev?.onWin) window.removeEventListener("resize", prev.onWin);
+  } catch {}
+
+  const onWin = () => applyHeights();
+  window.addEventListener("resize", onWin, { passive: true });
+
+  let ro = null;
+  if ("ResizeObserver" in window) {
+    ro = new ResizeObserver(() => applyHeights());
+    ro.observe(viewport);
+  }
+
+  carouselLayoutRegistry.set(carouselRoot, { ro, onWin });
+
+  function armFirstDomImage(img) {
+    if (!img) return;
+    if (setRatioFromNatural(img.naturalWidth, img.naturalHeight)) {
+      applyHeights();
+      return;
     }
-    return false;
+    img.addEventListener(
+      "load",
+      () => {
+        if (setRatioFromNatural(img.naturalWidth, img.naturalHeight)) applyHeights();
+      },
+      { once: true },
+    );
   }
 
   try {
     const firstSlideImg = carouselRoot.querySelector(".carouselSlide img");
-    if (measure(firstSlideImg)) return;
+    armFirstDomImage(firstSlideImg);
 
+    // If the DOM image hasn't decoded yet, also probe (helps with fast navigation / cache timing).
     const probe = new Image();
     probe.decoding = "async";
-    probe.onload = () => measure(probe);
+    probe.onload = () => {
+      if (ratioWoverH) return; // first image path already won
+      if (setRatioFromNatural(probe.naturalWidth, probe.naturalHeight)) applyHeights();
+    };
     probe.onerror = () => {
-      // Safe fallback if the first asset fails to load
-      carouselRoot.style.removeProperty("--carousel-aspect");
+      if (ratioWoverH) return;
+      // Sensible default if the first asset is missing/broken
+      ratioWoverH = 16 / 9;
+      applyHeights();
     };
     probe.src = src;
   } catch {
@@ -253,7 +311,7 @@ function buildCarousel(photos) {
   const root = el("div", { class: "carousel" }, [viewport, controls]);
 
   requestAnimationFrame(() => {
-    if (photos[0]?.src) applyCarouselAspectFromFirstImage(root, photos[0].src);
+    if (photos[0]?.src) applyCarouselViewportSizingFromFirstImage(root, photos[0].src);
   });
 
   return root;

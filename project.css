@@ -173,8 +173,7 @@ body.projectBody {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   width: 100%;
-  max-height: min(78vh, 900px);
-  aspect-ratio: var(--carousel-aspect, 16 / 9);
+  /* Height is set in JS from the first image's intrinsic ratio (see project.js). */
 }
 .carouselViewport::-webkit-scrollbar {
   display: none;
