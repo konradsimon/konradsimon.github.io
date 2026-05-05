@@ -100,9 +100,19 @@ function buildMeta(project) {
   const rows = [];
   if (asText(project.role)) rows.push(["Role", asText(project.role)]);
 
+  function multilineNode(text) {
+    const lines = String(text ?? "").split(/\r?\n/);
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < lines.length; i++) {
+      if (i) frag.append(el("br"));
+      frag.append(document.createTextNode(lines[i]));
+    }
+    return frag;
+  }
+
   const creditsText = asText(project.credits);
   const participants = Array.isArray(project.participants) ? project.participants.filter(Boolean).map(asText).filter(Boolean) : [];
-  if (creditsText) rows.push(["Credits", creditsText]);
+  if (creditsText) rows.push(["Credits", multilineNode(creditsText)]);
   else if (participants.length) rows.push(["Credits", participants.join(", ")]);
 
   if (asText(project.videoUrl)) {

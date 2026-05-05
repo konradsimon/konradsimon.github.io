@@ -27,10 +27,18 @@
       );
     </script>
     <script src="config.js"></script>
+    <script>
+      // Prevent Decap from auto-fetching `config.yml` if it races manual init.
+      // We always init explicitly below with `config.js`.
+      window.CMS_MANUAL_INIT = true;
+    </script>
     <script src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"></script>
     <script>
       // Init with JS config (keeps category options in sync)
-      window.CMS?.init({ config: window.DECAP_CMS_CONFIG });
+      if (!window.CMS) {
+        throw new Error("Decap CMS did not load");
+      }
+      window.CMS.init({ config: window.DECAP_CMS_CONFIG });
     </script>
   </body>
 </html>

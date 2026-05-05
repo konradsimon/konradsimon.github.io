@@ -44,7 +44,7 @@ window.DECAP_CMS_CONFIG = {
                 { name: "title", label: "Title", widget: "string", required: true },
                 { name: "subtitle", label: "Subtitle", widget: "string", required: false },
                 { name: "role", label: "My function / role", widget: "string", required: false },
-                { name: "credits", label: "Credits", widget: "string", required: false, hint: "e.g. Name 1, Name 2 (spaces allowed)" },
+                { name: "credits", label: "Credits", widget: "text", required: false, hint: "One credit per line (line breaks supported)" },
                 { name: "description", label: "Description", widget: "text", required: false },
                 {
                   name: "photos",
