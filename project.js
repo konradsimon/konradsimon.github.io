@@ -262,7 +262,7 @@ function buildCarousel(photos) {
   const dotsWrap = el("div", { class: "carouselDots" });
   const dots = photos.map((_, idx) => {
     const b = el("button", { class: "dot", type: "button", "aria-label": `Go to image ${idx + 1}` });
-    b.addEventListener("click", () => slides[idx].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" }));
+    b.addEventListener("click", () => slides[idx].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" }));
     dotsWrap.append(b);
     return b;
   });

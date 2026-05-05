@@ -188,7 +188,7 @@ body.projectBody {
 }
 
 .carouselSlide {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   scroll-snap-stop: always;
   flex: 0 0 100%;
   position: relative;
