@@ -170,6 +170,7 @@ body.projectBody {
 .carouselViewport {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   width: 100%;
@@ -184,7 +185,8 @@ body.projectBody {
 }
 
 .carouselSlide {
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   flex: 0 0 100%;
   position: relative;
   background: #000;
