@@ -104,6 +104,13 @@ body.projectBody {
   padding: 18px 18px;
 }
 
+/* On desktop: let the big title breathe and align meta closer to the About section. */
+@media (min-width: 901px) {
+  .projectMeta {
+    align-self: end;
+  }
+}
+
 .metaRow {
   display: grid;
   grid-template-columns: 110px 1fr;
