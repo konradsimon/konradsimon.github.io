@@ -32,7 +32,7 @@
     {
       "photos": [
         {
-          "image": "/assets/uploads/img_4326.png",
+          "image": "/assets/uploads/img_4326.jpg",
           "credit": "Luca Spanier"
         },
         {
@@ -40,7 +40,7 @@
           "credit": "Laura Rukavina"
         },
         {
-          "image": "/assets/uploads/img_4331.png",
+          "image": "/assets/uploads/img_4331.jpg",
           "credit": "Luca Spanier"
         },
         {
@@ -92,13 +92,13 @@
     {
       "photos": [
         {
-          "image": "/assets/uploads/untitled2.png"
+          "image": "/assets/uploads/untitled2.jpg"
         },
         {
-          "image": "/assets/uploads/63-b35.png"
+          "image": "/assets/uploads/63-b35.jpg"
         },
         {
-          "image": "/assets/uploads/untitled3.png"
+          "image": "/assets/uploads/untitled3.jpg"
         }
       ],
       "slug": "manipulation",
@@ -141,29 +141,29 @@
       "description": "TAPE is a show control framework that bridges Ableton Live and TouchDesigner for audiovisual live performance. Built on top of TDAbleton, it synchronizes Ableton's timeline structure with a hierarchical visual network, providing normalized data buses for audio level, MIDI, beat, and parameter automation. Visual modules bind to these buses in real time, allowing generative content, live camera input, video playback, and pixel mapping pipelines to respond directly to the music. TAPE does not generate visual content itself, but provides the structural and reactive infrastructure on which a complete audiovisual show can be built.",
       "photos": [
         {
-          "image": "/assets/uploads/performmode_2.png"
+          "image": "/assets/uploads/performmode_2.jpg"
         },
         {
-          "image": "/assets/uploads/network_tape.png"
+          "image": "/assets/uploads/network_tape.jpg"
         }
       ]
     },
     {
       "photos": [
         {
-          "image": "/assets/uploads/img_5706.jpeg",
+          "image": "/assets/uploads/img_5706.jpg",
           "credit": "Gerrit Kress"
         },
         {
-          "image": "/assets/uploads/img_5689.jpeg",
+          "image": "/assets/uploads/img_5689.jpg",
           "credit": "Gerrit Kress"
         },
         {
-          "image": "/assets/uploads/technology_quantum_showcase.webp",
+          "image": "/assets/uploads/technology_quantum_showcase.jpg",
           "credit": "Deutsche Telekom"
         },
         {
-          "image": "/assets/uploads/product_ai-calling_showcase.webp",
+          "image": "/assets/uploads/product_ai-calling_showcase.jpg",
           "credit": "Deutsche Telekom"
         }
       ],
@@ -186,35 +186,35 @@
       "description": "A hardware project in which I designed and built eight 2-metre, high-brightness, high-resolution pixel tubes including their controllers",
       "photos": [
         {
-          "image": "/assets/uploads/img_2405.jpeg"
+          "image": "/assets/uploads/img_2405.jpg"
         },
         {
-          "image": "/assets/uploads/img_2514.jpeg"
+          "image": "/assets/uploads/img_2514.jpg"
         },
         {
-          "image": "/assets/uploads/img_2358.jpeg"
+          "image": "/assets/uploads/img_2358.jpg"
         },
         {
-          "image": "/assets/uploads/img_2720.jpeg"
+          "image": "/assets/uploads/img_2720.jpg"
         },
         {
-          "image": "/assets/uploads/img_2510.jpeg"
+          "image": "/assets/uploads/img_2510.jpg"
         }
       ]
     },
     {
       "photos": [
         {
-          "image": "/assets/uploads/plants_1.png"
+          "image": "/assets/uploads/plants_1.jpg"
         },
         {
-          "image": "/assets/uploads/plants_2.png"
+          "image": "/assets/uploads/plants_2.jpg"
         },
         {
-          "image": "/assets/uploads/plants_3.png"
+          "image": "/assets/uploads/plants_3.jpg"
         },
         {
-          "image": "/assets/uploads/plants_4.png"
+          "image": "/assets/uploads/plants_4.jpg"
         }
       ],
       "slug": "plant-designer",
@@ -236,7 +236,7 @@
       "description": "A custom-built 4-axis MIDI joystick controller for expressive live performance. Designed for parameters like pitch bend and expression, it uses an ESP32 microcontroller and a 3D-printed enclosure.",
       "photos": [
         {
-          "image": "/assets/uploads/kosmoskontroller.png"
+          "image": "/assets/uploads/kosmoskontroller.jpg"
         }
       ]
     }
