@@ -225,6 +225,20 @@
       "credits": "Project by: Konrad Simon, Mathias Wensauer, Marika Ajima, Tobia Diekmann",
       "description": "In this interactive installation, visitors can explore and create personalized organic geo-metries based on three different L-system algorithms. L-systems (Lindenmayer systems)\nare a mathematical model used to describe the growth of plants and other natural forms through recursive rules and geometric patterns.\n\nUsing rotary controls and sensors, participants manipulate parameters to generate unique plant-inspired forms, which can be printed as tangible artworks. The installation encourages playful exploration of algorithmic design and the intersection of nature and technology.\n\nMade with TouchDesigner and Arduino",
       "category": "other"
+    },
+    {
+      "published": true,
+      "slug": "kontroller",
+      "category": "other",
+      "title": "Joystick Controller",
+      "subtitle": "DIY build",
+      "role": "Designer, Developer",
+      "description": "A custom-built 4-axis MIDI joystick controller for expressive live performance. Designed for parameters like pitch bend and expression, it uses an ESP32 microcontroller and a 3D-printed enclosure.",
+      "photos": [
+        {
+          "image": "/assets/uploads/kosmoskontroller.png"
+        }
+      ]
     }
   ]
 }
