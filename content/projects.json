@@ -70,13 +70,6 @@
       "category": "visuals-and-light"
     },
     {
-      "published": true,
-      "slug": "kodakosmos",
-      "category": "visuals-and-light",
-      "title": "Koda Kosmos",
-      "subtitle": "Release Show",
-      "role": "Lighting Design, Creative Direction, Musician",
-      "credits": "Daniel Olbricht – Musician",
       "photos": [
         {
           "image": "/assets/uploads/koda-release-konzert-23.jpg",
@@ -94,7 +87,15 @@
           "credit": "Erik Hartmann",
           "image": "/assets/uploads/koda-release-konzert-10.jpg"
         }
-      ]
+      ],
+      "slug": "kodakosmos",
+      "published": true,
+      "role": "Lighting Design, Creative Direction, Musician",
+      "subtitle": "Release Show",
+      "title": "Koda Kosmos",
+      "credits": "Daniel Olbricht – Musician",
+      "description": "For the electronic duo Koda Kosmos, I develop and run an audioreactive lighting installation: two monumental high-resolution LED columns and the \"Asteroid\", uniting music, space, and audience into a single experience.",
+      "category": "visuals-and-light"
     },
     {
       "photos": [
