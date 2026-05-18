@@ -120,6 +120,109 @@
 
 			let cmsLoaded = false;
 			let lastOpenedAt = 0;
+			let clickHintTimeout = null;
+			let clickHintIsFirst = true;
+			let closingViaRectClick = false;
+
+			function isIntroIdle() {
+				if (!bio || !blueRect) return false;
+				return bio.style.display === 'none';
+			}
+
+			function clearClickHintTimer() {
+				if (clickHintTimeout) {
+					clearTimeout(clickHintTimeout);
+					clickHintTimeout = null;
+				}
+			}
+
+			function stopClickHint() {
+				clearClickHintTimer();
+				if (blueRect) {
+					blueRect.classList.remove('clickHint', 'clickHintAction', 'clickHint--toWhite', 'clickHint--toBlue');
+				}
+				clickHintIsFirst = true;
+			}
+
+			function scheduleClickHint() {
+				clearClickHintTimer();
+				if (!blueRect || !isIntroIdle()) return;
+				if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+				const delayMs = clickHintIsFirst ? 10000 : 3000;
+				clickHintTimeout = setTimeout(() => {
+					clickHintTimeout = null;
+					if (!isIntroIdle()) return;
+					clickHintIsFirst = false;
+					blueRect.classList.add('clickHint');
+				}, delayMs);
+			}
+
+			function startClickHintLoop() {
+				stopClickHint();
+				scheduleClickHint();
+			}
+
+			function playClickHintOnce() {
+				if (!blueRect) return;
+				if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+				blueRect.classList.remove('clickHint', 'clickHintAction', 'clickHint--toWhite', 'clickHint--toBlue');
+				void blueRect.offsetWidth;
+				blueRect.classList.add('clickHint');
+			}
+
+			function showPanelAndScroll() {
+				if (!bio || !blueRect) return;
+				bio.style.display = 'block';
+				blueRect.style.backgroundColor = '#FFF';
+				requestAnimationFrame(() => {
+					try {
+						bio.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					} catch (e) {
+						window.scrollTo(0, 0);
+					}
+				});
+			}
+
+			function finishOpenPanel() {
+				lastOpenedAt = Date.now();
+				loadCmsProjects();
+				showPanelAndScroll();
+			}
+
+			function playClickAction(direction) {
+				if (!blueRect) return;
+				const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				if (reduced) {
+					if (direction === 'open') finishOpenPanel();
+					else blueRect.style.backgroundColor = '#00F';
+					return;
+				}
+
+				blueRect.classList.remove('clickHint', 'clickHintAction', 'clickHint--toWhite', 'clickHint--toBlue');
+				void blueRect.offsetWidth;
+				blueRect.classList.add('clickHintAction', direction === 'open' ? 'clickHint--toWhite' : 'clickHint--toBlue');
+			}
+
+			if (blueRect) {
+				blueRect.addEventListener('animationend', (e) => {
+					const name = e.animationName;
+					if (name === 'rectClickHint') {
+						blueRect.classList.remove('clickHint');
+						scheduleClickHint();
+						return;
+					}
+					if (name === 'rectClickHintToWhite') {
+						blueRect.classList.remove('clickHintAction', 'clickHint--toWhite');
+						blueRect.style.backgroundColor = '#FFF';
+						return;
+					}
+					if (name === 'rectClickHintToBlue') {
+						blueRect.classList.remove('clickHintAction', 'clickHint--toBlue');
+						blueRect.style.backgroundColor = '#00F';
+					}
+				});
+			}
 			async function loadCmsProjects() {
 				if (cmsLoaded) return;
 				cmsLoaded = true;
@@ -163,22 +266,11 @@
 
 			// Default state: rectangle is blue (clickable).
 			if (blueRect) blueRect.style.backgroundColor = '#00F';
+			startClickHintLoop();
 
 			function openPanel() {
 				const isVisible = bio.style.display !== 'none';
-				if (!isVisible) {
-					bio.style.display = 'block';
-					blueRect.style.backgroundColor = '#FFF';
-					lastOpenedAt = Date.now();
-					loadCmsProjects();
-					requestAnimationFrame(() => {
-						try {
-							bio.scrollIntoView({ behavior: 'smooth', block: 'start' });
-						} catch (e) {
-							window.scrollTo(0, 0);
-						}
-					});
-				}
+				if (!isVisible) finishOpenPanel();
 			}
 
 			// If coming back from a project page, skip the cables animation and go straight to projects.
@@ -196,15 +288,24 @@
 				// Avoid immediately closing right after opening (auto-scroll).
 				if (window.scrollY <= 2 && bio.style.display !== 'none' && Date.now() - lastOpenedAt > 700) {
 					bio.style.display = 'none';
-					blueRect.style.backgroundColor = '#00F';
+					if (!closingViaRectClick) {
+						playClickAction('close');
+					} else {
+						blueRect.style.backgroundColor = '#00F';
+					}
+					closingViaRectClick = false;
 					// if we hid the cables animation via skipIntro, restore it when leaving projects
 					if (iframe) iframe.style.display = '';
+					startClickHintLoop();
 				}
 			}, { passive: true });
 
 			document.getElementById('blueRect').addEventListener('click', function () {
 				const isVisible = bio.style.display !== 'none';
 				if (isVisible) {
+					clearClickHintTimer();
+					closingViaRectClick = true;
+					playClickAction('close');
 					// Smoothly return to the intro animation at the top.
 					// Don't hide the panel immediately, otherwise the page height can shrink and the browser
 					// "snaps" to the top, canceling the smooth scroll.
@@ -214,7 +315,9 @@
 						window.scrollTo(0, 0);
 					}
 				} else {
-					openPanel();
+					clearClickHintTimer();
+					playClickAction('open');
+					finishOpenPanel();
 				}
 			});
 		})();

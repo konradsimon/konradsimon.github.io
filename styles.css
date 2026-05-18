@@ -73,11 +73,13 @@ option {
     flex-direction:column;
     align-content: flex-end;
     z-index: 10;
-    pointer-events: none; 
+    pointer-events: none;
+	overflow: visible;
 
 }
 
 .rect {
+	--rect-overhang: 48px;
 	height: 56px;
 	width: 300px;
 	margin: 0px;
@@ -86,8 +88,80 @@ option {
 	border-radius: var(--radius) 0 0 var(--radius);
 	display: inline-block;
 	cursor: pointer;
-	pointer-events: auto; 
+	pointer-events: auto;
+	transform: translateX(var(--rect-overhang));
+	transform-origin: right center;
+	will-change: transform;
+}
 
+@media (min-width: 601px) {
+	.rect {
+		--rect-overhang: 72px;
+		height: 64px;
+		width: 360px;
+	}
+}
+
+/* Idle hint: press only (no color change). */
+@keyframes rectClickHint {
+	0%,
+	100% {
+		transform: translateX(var(--rect-overhang)) scale(1);
+	}
+	48% {
+		transform: translateX(calc(var(--rect-overhang) - 6px)) scale(0.93);
+	}
+}
+
+/* Real click: press + color crossfade in sync. */
+@keyframes rectClickHintToWhite {
+	0% {
+		transform: translateX(var(--rect-overhang)) scale(1);
+		background-color: #00f;
+	}
+	48% {
+		transform: translateX(calc(var(--rect-overhang) - 6px)) scale(0.93);
+		background-color: #fff;
+	}
+	100% {
+		transform: translateX(var(--rect-overhang)) scale(1);
+		background-color: #fff;
+	}
+}
+
+@keyframes rectClickHintToBlue {
+	0% {
+		transform: translateX(var(--rect-overhang)) scale(1);
+		background-color: #fff;
+	}
+	48% {
+		transform: translateX(calc(var(--rect-overhang) - 6px)) scale(0.93);
+		background-color: #00f;
+	}
+	100% {
+		transform: translateX(var(--rect-overhang)) scale(1);
+		background-color: #00f;
+	}
+}
+
+.rect.clickHint {
+	animation: rectClickHint 0.5s cubic-bezier(0.45, 0, 0.2, 1) 1;
+}
+
+.rect.clickHintAction.clickHint--toWhite {
+	animation: rectClickHintToWhite 0.5s cubic-bezier(0.45, 0, 0.2, 1) 1;
+}
+
+.rect.clickHintAction.clickHint--toBlue {
+	animation: rectClickHintToBlue 0.5s cubic-bezier(0.45, 0, 0.2, 1) 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rect.clickHint,
+	.rect.clickHintAction.clickHint--toWhite,
+	.rect.clickHintAction.clickHint--toBlue {
+		animation: none;
+	}
 }
 
 @media (max-width: 600px) {
@@ -100,6 +174,7 @@ option {
 	}
 	/* bigger click target for the rectangle */
 	.rect {
+		--rect-overhang: 9vmax;
 		height: 7vmax;
 		width: 24vmax;
 	}
