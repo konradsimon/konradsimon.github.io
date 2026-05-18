@@ -3,20 +3,27 @@
     {
       "photos": [
         {
-          "image": "/assets/uploads/1.jpg",
-          "credit": ""
+          "image": "/assets/uploads/timeline-1_01_02_22_01.jpg",
+          "credit": "Jakob Noweck"
         },
         {
-          "image": "/assets/uploads/11.jpg",
-          "credit": ""
+          "image": "/assets/uploads/timeline-1_01_06_59_18.jpg",
+          "credit": "Jakob Noweck"
         },
         {
-          "image": "/assets/uploads/15.jpg",
-          "credit": ""
+          "image": "/assets/uploads/timeline-1_01_36_40_00.jpg",
+          "credit": "Jakob Noweck"
         },
         {
-          "image": "/assets/uploads/7.jpg",
-          "credit": ""
+          "image": "/assets/uploads/timeline-1_01_34_39_12.jpg",
+          "credit": "Jakob Noweck"
+        },
+        {
+          "image": "/assets/uploads/timeline-1_01_31_01_18.jpg",
+          "credit": "Jakob Noweck"
+        },
+        {
+          "image": "/assets/uploads/timeline-1_01_38_25_00.jpg"
         }
       ],
       "slug": "kodakosmosvideo",
@@ -63,13 +70,6 @@
       "category": "visuals-and-light"
     },
     {
-      "published": true,
-      "slug": "kodakosmos",
-      "category": "visuals-and-light",
-      "title": "Koda Kosmos",
-      "subtitle": "Release Show",
-      "role": "Lighting Design, Creative Direction, Musician",
-      "credits": "Daniel Olbricht – Musician",
       "photos": [
         {
           "image": "/assets/uploads/koda-release-konzert-23.jpg",
@@ -87,7 +87,15 @@
           "credit": "Erik Hartmann",
           "image": "/assets/uploads/koda-release-konzert-10.jpg"
         }
-      ]
+      ],
+      "slug": "kodakosmos",
+      "published": true,
+      "role": "Lighting Design, Creative Direction, Musician",
+      "subtitle": "Release Show",
+      "title": "Koda Kosmos",
+      "credits": "Daniel Olbricht – Musician",
+      "description": "For the electronic duo Koda Kosmos, I develop and run an audioreactive lighting installation: two monumental high-resolution LED columns and the \"Asteroid\", uniting music, space, and audience into a single experience.",
+      "category": "visuals-and-light"
     },
     {
       "photos": [
